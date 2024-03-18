@@ -1,0 +1,22 @@
+.card{
+    border: 0;
+}
+
+.form-group .wtf_form{
+    border: 0;
+    border-bottom: 2px solid #CEC8FF;
+    border-radius: 0;
+}
+
+.wtf_button{
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 1px;
+    border-color: #9e91ff;
+    background-color: #9e91ff;
+    color: white;
+}
+a{
+    color: #9d91ff;
+    text-decoration: none;
+}

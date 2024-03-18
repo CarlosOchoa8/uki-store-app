@@ -1,0 +1,68 @@
+{% extends 'users/account/account_base.html' %}
+
+{% block content %}
+{#    TODO Esto soluciona heredar lo que existe en account_base, solo lo de base lo hereda#}
+    {{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users/my_account.css') }}" >
+    <hr class="_separator">
+    <div class="container col-md-7">
+        <div class="row justify-content-center">
+            <hr class="visible_separator">
+            <h3 class="text-center">Cuenta</h3>
+            <label class="text-center">Actualiza tu información personal.</label>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col my">
+                            <form action="" method="post" >
+                                <div class="form-group first_name_section">
+                                    {{ form.first_name.label }}
+                                    {{ form.first_name(class="form-control mt-2", required=True) }}
+                                    {% for error in form.first_name.errors %}
+                                        <span> {{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group last_name_section">
+                                    {{ form.last_name.label }}
+                                    {{ form.last_name(class="form-control mt-2", required=True) }}
+                                    {% for error in form.last_name.errors %}
+                                        <span> {{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group email_section">
+                                    {{ form.email.label }}
+                                    {{ form.email(class="form-control mt-2", required=True) }}
+                                    {% for error in form.email.errors %}
+                                        <span> {{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group phone_number_section">
+                                    {{ form.phone_number.label }}
+                                    {{ form.phone_number(class="form-control mt-2 ", required=True) }}
+                                    {% for error in form.phone_number.errors %}
+                                        <span> {{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {{ form.hidden_tag() }}
+                                <div class="text-center submit_section">
+                                    {{ form.submit(class="btn", type="submit") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+{%  endblock %}
+{#    {% for message in get_flashed_messages() %}#}
+{#    <div class="container mt-3">#}
+{#        <div class="row">#}
+{#            <div class="col-md-6 mx-auto">#}
+{#                <div class="alert alert-danger" role="alert">#}
+{#                    {{ message }}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endfor %}#}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+    Registro
+{% endblock %}
+
+{% block content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/users/sign_up.css') }}" type="text/css">
+<div class="container mt5-m">
+    <div class="row justify-content-center">
+        <div class="col-sm-5">
+            <div class="card cart_class">
+                <div class="card-body ">
+                    <h1 class="text-center display-6">Regístrate</h1>
+                </div>
+                <div class="text-center lead message">
+                    ¿Ya tienes un perfil personal?
+                    <a href="{{ url_for("auth.sign_in")}}">
+                        Iniciar sesión
+                    </a>
+                </div>
+                <form action="" method="POST" class="p-4 custom-form">
+                    <div class="form-group">
+                        {{ form.first_name.label(class="mb-2 mt-4") }}
+                        {{ form.first_name(class="form-control wtf_form") }}
+                        {% for error in form.first_name.errors %}
+                            <span> {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.last_name.label(class="mb-2 mt-4") }}
+                        {{ form.last_name(class="form-control wtf_form") }}
+                        {% for error in form.last_name.errors %}
+                            <span> {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label(class="mb-2 mt-4") }}
+                        {{ form.email(class="form-control wtf_form") }}
+                        {% for error in form.email.errors %}
+                            <span> {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="mb-2 mt-4") }}
+                        {{ form.password(class="form-control wtf_form") }}
+                        {% for error in form.password.errors %}
+                            <span> {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.phone_number.label(class="mb-2 mt-4") }}
+                        {{ form.phone_number(class="form-control wtf_form", placeholder="Opcional", required=False) }}
+                        {% for error in form.phone_number.errors %}
+                            <span> {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="text-center mt-4">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(class="btn wtf_button", type="submit") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

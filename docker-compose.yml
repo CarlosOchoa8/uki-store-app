@@ -1,0 +1,66 @@
+version: '3.17'
+
+networks:
+  uki_store_network:
+    driver: bridge
+
+services:
+  uki-store-app:
+    container_name: uki-store-app
+    image: ${IMAGE_NAME}
+    ports:
+      - '5000:5000'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # command: flask run
+    networks:
+      - uki_store_network
+    volumes:
+      - ./app/:/home/app/
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_started
+
+  db:
+    image: postgres:15.3
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    ports:
+      - "5454:5432"
+    networks:
+      - uki_store_network
+
+  migration:
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+    image: ${IMAGE_NAME}:latest
+    networks:
+      - uki_store_network
+    entrypoint: /bin/sh -c "dbmate wait && dbmate up"
+    depends_on:
+      - db
+
+
+volumes:
+    db_data:
+
+# version: '3'
+
+# services:
+#   python-app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:8080"
+#     volumes:
+#       - .:/app:ro
