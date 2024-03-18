@@ -1,0 +1,63 @@
+._separator{
+    border-width:0;color:white;
+    background-color: white;
+}
+
+.visible_separator{
+    width: 90%;
+    color: dimgray;
+}
+
+.card{
+    border: none;
+}
+
+.col{
+    position: relative;
+    height: 300px;
+    align-items: center;
+}
+
+.first_name_section{
+    position: absolute;
+    width: 35%;
+    left: 2%;
+}
+
+.last_name_section{
+    position: absolute;
+    width: 35%;
+    right: 10%;
+}
+
+.email_section{
+    position: absolute;
+    width: 35%;
+    left: 2%;
+    bottom: 50%;
+}
+
+.phone_number_section{
+    position: absolute;
+    width: 35%;
+    bottom: 50%;
+    right: 10%;
+}
+
+.submit_section{
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    border: 1px solid #9d91ff;
+    background-color: #9d91ff;
+    transform: translate(-50%, -50%);
+}
+
+.form-control{
+        border: 1px solid darkgray;
+        border-radius: 0;
+    }
+
+span{
+    color: red;
+}

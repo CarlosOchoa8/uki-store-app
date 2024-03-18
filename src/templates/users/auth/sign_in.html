@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    Inicio de sesión
+{% endblock %}
+
+{% block content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/users/sign_in.css')}}" type="text/css">
+<div class="container mt5-m">
+    <div class="row justify-content-center">
+        <div class="col-sm-5">
+            <div class="card">
+                <div class="card-body ">
+                    <h1 class="text-center display-6">Iniciar Sesión</h1>
+                </div>
+                <div class="text-center lead">
+                    ¿Eres nuevo en este sitio?
+                    <a href="{{ url_for("auth.sign_up")}}">
+                        Regístrate
+                    </a>
+                </div>
+                <form action="" method="post" class="p-4">
+                    <div class="form-group">
+                        <label class="mb-2 mt-4" for="email">Email</label>
+                        <input type="text" class="form-control wtf_form" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="mb-2 mt-4" for="password">Contraseña</label>
+                        <input type="password" class="form-control wtf_form" id="password" name="password" required>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn wtf_button">Iniciar sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

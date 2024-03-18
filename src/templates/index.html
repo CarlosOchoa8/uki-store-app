@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/index.css') }}">
+    <section>
+    <div class="products_section">
+        <img src="https://static.wixstatic.com/media/e673e0_2c11527b74d24eeab077004d87c79be1~mv2.jpg/v1/fill/w_980,h_865,al_t,q_85,usm_0.66_1.00_0.01,enc_auto/e673e0_2c11527b74d24eeab077004d87c79be1~mv2.jpg" alt="" >
+    </div>
+    </section>
+    <section>
+        <div class="front_image">
+            <img alt="" src="https://static.wixstatic.com/media/e673e0_1e2512a763d54d1e827f5c854c4c3781~mv2.png/v1/fill/w_1078,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e673e0_1e2512a763d54d1e827f5c854c4c3781~mv2.png">
+            <div class="welcome_label">
+                <span>
+                    Bienvenidos a <br>
+                    Ukituki Store!
+                </span>
+            </div>
+            <div class="message_label">
+                <span>
+                    Estamos encantados de tenerte por aquí.<br>
+                    Con nosotros encontrarás todo tipo de detalles preciosos<br>
+                    para decorar tu día a día.<br>
+                </span>
+                    <div class="line"></div>
+            </div>
+        </div>
+    </section>
+<section class="carousel_section">
+
+    <div class="head_message">
+        <h2>
+            <span>
+                DESCUBRE NUESTROS <br> PRODUCTOS
+            </span>
+        </h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="carousel">
+        <div class="products-carousel">
+            {% for product in products %}
+            <div class="imgs">
+                <img class="single_img"src="{{ url_for('static', filename=product.category + '/' + product.main_picture) }}"
+                    alt="Descripción de la imagen">
+                <h4 class="name">{{ product.name }}</h4>
+                <span class="price">{{ product.price }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="left_button" onclick="moveCarousel('left')"> ← </button>
+        <button class="right_button" onclick="moveCarousel('right')"> → </button>
+    </div>
+
+    <script>
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.products-carousel');
+            const firstItem = carousel.firstElementChild;
+            const lastItem = carousel.lastElementChild;
+
+            if (direction === 'left') {
+                carousel.prepend(lastItem); // Mueve el último elemento al principio
+            } else {
+                carousel.appendChild(firstItem); // Mueve el primer elemento al final
+            }
+        }
+    </script>
+</section>
+
+<section class="about">
+    <div class="img_container">
+        <!-- <img class="about_us_img" alt= "" src="https://static.wixstatic.com/media/e673e0_bc4cf3bb22aa41949b8d4787102ac005~mv2.jpg/v1/fill/w_1897,h_609,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e673e0_bc4cf3bb22aa41949b8d4787102ac005~mv2.jpg"> -->
+        <div class="content_container">
+            <div class="back"></div>
+            <div class="title">
+                SOBRE NOSOTROS
+            </div>
+            <div class="line">
+                
+            </div>
+            <p class="message">
+                Somos un emprendimiento familiar que inició con todas sus<br>
+                energías a finales del 2022. Somos amantes de la temática<br>
+                kawaii y los artículos de buena calidad. Nuestra prioridad es<br>
+                traerte una gran variedad de productos a muy buen precio.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="follow_us">
+        <p>Síguenos en Instagram</p>
+        <a target="_blank" href="https://www.instagram.com/ukituki_store/">
+            <button class="ig_button">@UKITUKI_STORE</button>
+        </a>
+    </div>
+</section>
+
+<section>
+    <div>
+        <h1>INSTAGRAM</h1>
+    </div>
+</section>
+
+    <div class="container-sm text-center">
+        <h1 class="display-3">Bienvenido de vuelta</h1>
+        <hr class="my-4">
+        <p> Que quieres hacer?</p>
+        <div>
+            <a href="{{url_for('products.create')}}" class="btn btn-primary mx-2">Registrar Producto</a>
+            <a href="{{url_for('products.get_all')}}" class="btn btn-secondary mx-2">Ver productos</a>
+        </div>
+    </div>
+{% endblock %}
