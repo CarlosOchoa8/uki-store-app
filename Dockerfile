@@ -16,10 +16,10 @@ RUN pip install -r requirements.txt
 # RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire application code
-COPY ./src .
+COPY . .
 
 # Expose the port your application will run on
 EXPOSE 5000
 
 # Specify the command to run on container start
-CMD ["python", "app.py"]
+CMD ["python", "src/app.py"]
