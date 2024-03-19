@@ -17,7 +17,8 @@ services:
     networks:
       - uki_store_network
     volumes:
-      - ./app/:/home/app/
+      - ./src/:/home/app/
+      # - ./src/:/usr/home/app/src/
     env_file:
       - .env
     depends_on:
@@ -39,15 +40,15 @@ services:
     networks:
       - uki_store_network
 
-  migration:
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
-    image: ${IMAGE_NAME}:latest
-    networks:
-      - uki_store_network
-    entrypoint: /bin/sh -c "dbmate wait && dbmate up"
-    depends_on:
-      - db
+  # migration:
+  #   environment:
+  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+  #   image: ${IMAGE_NAME}:latest
+  #   networks:
+  #     - uki_store_network
+  #   entrypoint: /bin/sh -c "dbmate wait && dbmate up"
+  #   depends_on:
+  #     - db
 
 
 volumes:

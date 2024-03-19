@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Create and set the working directory
-WORKDIR /app
+WORKDIR /home/src/app
 
 # Copy only the requirements file first to leverage Docker caching
 COPY ./requirements.txt .
@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt
 # RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire application code
-COPY ./src .
+COPY ./src/ .
 
 # Expose the port your application will run on
 EXPOSE 5000
