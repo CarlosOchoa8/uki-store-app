@@ -17,8 +17,7 @@ services:
     networks:
       - uki_store_network
     volumes:
-      - ./src/:/home/app/
-      # - ./src/:/usr/home/app/src/
+      - ./src:/usr/src/app
     env_file:
       - .env
     depends_on:
