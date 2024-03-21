@@ -249,16 +249,14 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    border: 2px solid #bbb2ff;
     
     .shipping, .shopping, .payments {
         background-color: #9d91ff;
         position: relative;
-        width: 33.3%;
+        width: calc(100vw/3);
         font-family: montserrat, sans-serif;
         font-size: 20px;
         color: white;
-        border: 3px solid #1e07cf;
     }
     .shipping, .shopping, .payments {
         display: flex;
