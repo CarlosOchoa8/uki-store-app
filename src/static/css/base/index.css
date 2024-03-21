@@ -252,18 +252,16 @@
     
     .shipping, .shopping, .payments {
         background-color: #9d91ff;
-        position: relative;
+        position: inherit;
+        display: inherit;
+        flex-direction: column;
         width: calc(100vw/3);
+        padding: 130px 0;
         font-family: montserrat, sans-serif;
         font-size: 20px;
-        color: white;
-    }
-    .shipping, .shopping, .payments {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: inherit;
         align-items: center;
-        padding: 130px 0; 
+        color: white;
 
         .div_container {
             background-color: white;
@@ -274,9 +272,9 @@
 
             &:hover{
                 transform: scale(1.1);        
-                }
+            }
         }
-
+        
         .line {
             margin-top: 10px;
             width: 5%;
