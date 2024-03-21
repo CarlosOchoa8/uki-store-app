@@ -1,0 +1,101 @@
+.footer_container{
+    position: relative; 
+    width: 100%; 
+
+    .footer_{
+        position: absolute; 
+        height: 30vh; 
+        padding-top: 3%; 
+        width: 100%;
+    }
+
+    .left_column{
+        float: left; 
+        width: 50%; 
+        height: 75%; 
+        border-right: 5px dotted #fd92fd;
+        
+        .left_inside_column{
+            position: relative; 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-evenly; 
+            align-items: center; 
+            width: 100%; 
+            height: 100%;
+            
+            img{
+                max-width: 100%; 
+                max-height: 100%
+            }
+
+            .links{
+                position: relative; 
+                max-width: 100%; 
+                max-height: 100%;
+                
+                p{
+                    margin: 6px 0; 
+                    font-size: 16px;
+                }
+
+                a{
+                    text-decoration: none;
+                    font: normal normal normal 15px / 1.4em 'questrial', sans-serif;
+                    color: rgb(31, 31, 31);
+                }
+            }
+        }
+    }
+    
+    .right_column{
+        display: flex; 
+        float: left; 
+        width: 50%; 
+        height: 75%; 
+        border-left: 5px dotted #fd92fd;
+
+        .right_inside_column{
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            width: 50%; 
+            height: 100%; 
+            justify-content: center; 
+            align-items: center;
+
+            .schedule{
+                letter-spacing: .25em; 
+                font: normal normal bold 24px / 1.4em 'varela round', sans-serif;
+                color: #4d4da0;
+            }
+
+            .sub_schedule{
+                margin: 1px 0; 
+                font: normal normal normal 14px / 1.4em 'questrial', sans-serif; 
+                color: black;
+            }
+
+            .client_service{
+                margin-top: 15px;
+                font: normal normal normal 14px / 1.4em 'questrial', sans-serif;
+                color: #9e91ff;
+            }
+
+            .social_icons{
+                display: flex; 
+                flex-direction: row;
+
+                img{
+                    max-width: 100%;
+                     max-height: 100%;
+                }
+
+                a{
+                    max-width: 100%;
+                     max-height: 100%;
+                }
+            }
+        }
+    }
+}
