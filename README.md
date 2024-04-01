@@ -26,7 +26,7 @@ Add and set .env with vars to use database:
 
 #### Set Database credentials
 - `SECRET_KEY`: Security cookies configuration of Flask.
-- `DB_PORT`: Port of database.
+- `DB_PORT`: Port of postgresql database (5432).
 - `DB_HOST`: Host of database.
 - `DB_USER`: User of database.
 - `DB_PASSWORD`: Password of database.
