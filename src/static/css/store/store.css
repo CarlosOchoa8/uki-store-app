@@ -1,0 +1,61 @@
+.front_label{
+    width: 100%;
+    padding: 40px;
+    border: 2px solid black;
+    text-align: center;
+
+    span{
+        letter-spacing: .25em;
+        line-height: 1.2em;
+        font: normal normal bold 36px/1.6em 'varela round', sans-serif;
+        color: #4D4DA0;
+        letter-spacing: .25em;
+    }
+}
+
+.products_section{
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(210px, 310px) auto;
+    width: 100%;
+    border: 2px solid antiquewhite;
+
+    .content{
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 80px 40px;
+        border: 2px solid red;
+    }
+
+    .product_container{
+        text-align: center;
+        width: 100%;
+
+        .img_container{
+            height: 75%;
+            
+            .product_img{
+                height: 100%;
+                max-width: 179px;
+                max-height: 330px;
+                overflow-x: hidden;
+                object-fit: cover;
+            }
+        }
+        
+        .product_description{
+            position: relative;
+            height: 25%;
+            bottom: 0;
+        }
+        .name {
+            margin-top: 10px;
+            font: normal normal normal 16px/1.4em questrial, sans-serif;
+        }
+
+        .price {
+            font: normal normal normal 16px/1.4em questrial, sans-serif;
+            color: #9e91ff;
+        }
+    }
+}
