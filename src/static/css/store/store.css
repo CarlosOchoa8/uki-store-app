@@ -1,8 +1,6 @@
 .front_label{
     width: 100%;
     padding: 40px;
-
-    border: 2px solid black;
     text-align: center;
 
     span{
@@ -19,13 +17,11 @@
     display: grid;
     grid-template-columns: minmax(210px, 310px) auto;
     width: 100%;
-    border: 2px solid antiquewhite;
 
     .content{
         display:grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 80px 40px;
-        border: 2px solid red;
     }
 
     .product_container{
