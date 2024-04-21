@@ -26,5 +26,19 @@
             {% endfor %}
         </div>
     </div>
+    <div class="pagination">
+        <div class="pagination_buttons">
+            <div class="left_page">
+                {% if products.has_prev %}
+                <a href="{{ url_for('products.get_all', page=products.prev_num) }}"><button>Página anterior</button></a>
+                {% endif %}
+            </div>
+            <div class="right_page">
+                {% if products.has_next %}
+                <a href="{{ url_for('products.get_all', page=products.next_num) }}"><button>Página siguiente</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}

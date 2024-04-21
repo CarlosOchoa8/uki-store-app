@@ -39,6 +39,10 @@ def get() -> str:
     return "TODO: GET PRODUCT"
 
 
-@products_blueprint.route("/get_all")
-def get_all() -> str:
-    return "TODO: GET ALL PRODUCTS"
+@products_blueprint.route("/get_all", methods=["GET"])
+def get_all() -> Response:
+    """Returns: The rendered template with the products to display."""
+    page = request.args.get("page", 1,  type=int)
+    products = product_crud.get_multi(page=page)
+    print(type(render_template("products/store.html", products=products)))
+    return render_template("products/store.html", products=products)

@@ -1,5 +1,6 @@
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Type, Generic, TypeVar, Any, List
+from flask_sqlalchemy.pagination import Pagination
 from .db import db
 
 ModelType = TypeVar('ModelType')
@@ -49,6 +50,6 @@ class CRUDBase(Generic[ModelType, CreateFormType, UpdateFormType]):
         """Get a single Model filtered by id"""
         return self.model.query.get(id)
 
-    def get_multi(self) -> List[ModelType]:
-        """Get all Model objects"""
-        return self.model.query.all()
+    def get_multi(self, page: int | None = 1, per_page: int = 18) -> List[ModelType]:
+        """Get all Model objects paginated"""
+        return self.model.query.paginate(page=page, per_page=per_page, error_out=False)
