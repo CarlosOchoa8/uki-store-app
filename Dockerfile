@@ -22,4 +22,5 @@ COPY . .
 EXPOSE 5000
 
 # Specify the command to run on container start
-CMD ["python", "src/app.py"]
+# CMD ["python", "src/app.py"]
+ENTRYPOINT ["python", "src/app.py"]
