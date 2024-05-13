@@ -1,0 +1,55 @@
+.about_us{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    max-height: 717px;
+
+    .texts{
+        display: grid;
+        grid-column: auto;
+        background-color: #CEC8FF;
+        font: normal normal normal 16px/1.4em 'questrial', sans-serif;
+        text-align: center;
+        align-items: center;
+        gap: 15px;
+        align-content: center;
+        justify-content: center;
+        p{
+            color: #4D4DA0;
+            letter-spacing: .25em;
+            line-height: 1.5em;
+            font: normal normal bold 24px/1.4em 'varela round',
+            sans-serif;
+        }
+    }
+
+    .we_are{
+        align-content: center;
+        height: 110%;
+    }
+
+    .kind_message{
+        align-content: center;
+        height: 110%;
+    }
+
+    .separator{
+        width: 5%;
+        place-self: center;
+        border: 2px solid #9D91FF;
+        border-radius: 2px;
+    }
+}
+
+.image_container{
+    grid-column: auto;
+    max-height: 717px;
+    background-color: #CEC8FF;
+
+    .image{
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        object-fit: contain;
+    }
+}
