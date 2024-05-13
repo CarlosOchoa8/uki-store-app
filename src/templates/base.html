@@ -35,7 +35,7 @@
 </head>
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9e91ff; height: 85px;">
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #9e91ff; height: 85px;">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{url_for('index')}}">UkiTuki Store</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
           <a class="nav-link" href="{{ url_for('products.get_all')}}">Tienda</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Sobre Nosotros</a>
+            <a class="nav-link" href="{{ url_for('about_us') }}">Sobre Nosotros</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">FAQ</a>
