@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %} FAQ {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/faq.css') }}">
+
+<div class="faq_wrapper">
+    <h1>LAS PREGUNTAS MÁS COMUNES</h1>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿De qué parte son?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>Somos una tienda VIRTUAL en Bogotá - Colombia.</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Cómo hago una compra?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>PONER IMAGEN AQUI</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Qué métodos de pago manejan?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <img alt="" src="{{ url_for('static', filename='css/base/base_imgs/payments_methods.png') }}">
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Con qué empresas realizan los envíos?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>Ofrecemos métodos de envío seguros y confiables para que tus productos lleguen a tiempo y en buenas condiciones.
+            Trabajamos de la mano con <strong>Interrapidísimo</strong> y <strong>Envía</strong> debido a que sus costos son de los más amigables del mercado.<br>
+            
+            
+            <br><strong>Bogotá</strong>: $7.500 a $9.500apróx.
+            
+            <br><strong>Resto del país</strong>: $12.500 a $15.000 apróx.<br>
+            <img alt="" src="{{ url_for('static', filename='css/base/base_imgs/shippings.png') }}">
+        </p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Cuánto tarda mi pedido en llegar?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>Realizamos envíos dos veces a la semana (LUNES Y JUEVES), dando un plazo de (3)tres a (5)cinco días hábiles para recibir
+            tu pedido. Es decir que si realizaste tu pago un día MARTES, tu pedido se despacha el JUEVES y a partir de ahí comienzas
+            a contar el tiempo del plazo.
+                PONER IMAGEN AQUI
+            </p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Es seguro colocar mis datos en la página?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>En Ukituki nos tomamos muy en serio la privacidad y la seguridad de nuestros clientes. Por eso, garantizamos la
+            protección de tus datos personales y la confidencialidad de tus compras. Si tienes alguna pregunta o inquietud acerca de
+            nuestra política de privacidad no dudes en contactarnos, nuestro equipo de atención al cliente está disponible para
+            ayudarte.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="accordion">
+            ¿Venden al por mayor?
+            <i class="fa-solid fa-chevron-fown"></i>
+        </button>
+        <div class="pannel">
+            <p>¡Si! En Ukituki Store ofrecemos una variedad de productos para pedidos mínimo de $120.000COP. Contáctanos para obtener
+            más información y solicitar el catálogo.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    // Si el panel está abierto, ciérralo y oculta su borderBottom
+                    panel.style.maxHeight = null;
+                    setTimeout(() => {
+                        this.style.borderBottom = "2px solid #9D91FF";
+                        panel.style.borderBottom = "none"; // Ocultamos el borderBottom de panel cuando se cierra
+                    }, 700); // Agregamos un pequeño retraso (700ms) para dar tiempo al panel para cerrarse por completo
+                } else {
+                    // Si el panel está cerrado, ábrelo y muestra su borderBottom
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    this.style.borderBottom = "none"; // Ocultamos el borderBottom de accordion mientras se abre el panel
+                    panel.style.borderBottom = "2px solid #9D91FF"; // Mostramos el borderBottom de panel cuando se abre
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+s
