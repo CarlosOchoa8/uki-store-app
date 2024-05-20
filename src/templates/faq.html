@@ -5,9 +5,10 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/faq.css') }}">
 
+<section class="faq_section" style="background-image: url('{{ url_for("static", filename="css/base/base_imgs/faq_background.png") }}'); background-size: cover; background-position: center; background-attachment: fixed;">
 <div class="faq_wrapper">
     <h1>LAS PREGUNTAS MÁS COMUNES</h1>
-
+    <div class="line"></div>
     <div class="faq">
         <button class="accordion">
             ¿De qué parte son?
@@ -97,7 +98,7 @@
     </div>
 
 </div>
-
+</section>
     <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
