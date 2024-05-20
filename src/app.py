@@ -30,5 +30,21 @@ def index():
     return render_template("index.html", products=products)
 
 
+@app.route("/about_us", methods=["GET"])
+def about_us():
+    """
+    Render template for about us html
+    """
+    return render_template("about_us.html")
+
+
+@app.route("/faq", methods=["GET"])
+def frecuent_questions_answers():
+    """
+    Render template for faq html
+    """
+    return render_template("faq.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
