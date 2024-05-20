@@ -31,5 +31,17 @@ class CRUDCourse(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
             db.session.rollback()
             raise SQLAlchemyError(f"Error: {str(e)}")
 
+    def filter_by_category(self, param: str, page: int | None = 1, per_page: int = 18) -> list[Product]:
+        """Return items by specific category"""
+        return self.model.query.filter(
+            self.model.category == param).paginate(
+                page=page, per_page=per_page, error_out=False)
+
+
+    def get_products_categories(self) -> list[Product]:
+        """Return a list with all products categories."""
+        return [category[0] for category in 
+                self.model.query.with_entities(self.model.category).distinct().all()
+                ]
 
 product_crud = CRUDCourse(Product)

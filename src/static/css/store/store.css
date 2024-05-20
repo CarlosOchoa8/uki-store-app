@@ -57,6 +57,47 @@
     }
 }
 
+.filters_column {
+    display: grid;
+    grid-template-columns: auto-fill;
+    /* gap: 10px; */
+    /* border: 1px solid black; */
+    
+    label{
+        cursor: pointer;
+    }
+
+    label input[type="checkbox"]{
+        display: none;
+
+        &:checked~span{
+            background: #9D91FF;
+        }
+    }
+
+    label span {
+        background: #fff;
+        border: 1px solid #9D91FF;
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition: .6s ease;
+        user-select: none;
+        overflow: hidden;
+
+        &:before{
+            content: "";
+        }
+        
+        &:hover{
+            border: 1px solid #B6ADFF6A;
+            /* position: relative; */
+            background: #B6ADFF6A;
+        }
+    }
+}
+
+
+
 .pagination {
     display: flex;
     justify-content: center;

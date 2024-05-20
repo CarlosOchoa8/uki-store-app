@@ -8,8 +8,11 @@
 
 <section>
     <div class="products_section">
-        <div class="filters">
-            filters
+        <div class="filters_column">
+
+            {% for category in categories %}
+            <label><input type="checkbox" id="{{ category }}"><span>{{ category }}</span></label>
+            {% endfor %}
         </div>
         <div class="content">
             {% for product in products %}
@@ -40,5 +43,34 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.filters_column input[type="checkbox"]');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const selectedFilters = [];
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            selectedFilters.push(checkbox.id);
+                        }
+                    });
+
+                    const url = "{{ url_for('products.get_all') }}";
+                    const params = new URLSearchParams();
+                    selectedFilters.forEach(filter => {
+                        params.append('filter', filter);
+                    });
+
+                    // Construye la URL con los parámetros de la consulta
+                    const queryString = params.toString();
+                    const fullUrl = queryString ? url + '?' + queryString : url;
+
+                    // Redirige a la nueva URL
+                    window.location.href = fullUrl;
+                });
+            });
+        });
+    </script>
 </section>
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Sobre Nosotros {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/about_us.css') }}">
+<div class="about_us">
+    <div class="texts">
+        <p>SOBRE NOSOTROS</p>
+            <div class="separator">
+            </div>
+            <div class="we_are">
+                Somos ukituki_store, una papelería en línea<br>
+                que se especializa en productos de temática kawaii.
+            </div>
+            <div class="kind_message">
+                ¡Encuentra ese detalle perfecto y adorable en nuestra<br>
+                tienda!
+            </div>
+    </div>
+    <div class="image_container">
+        <img class="image" 
+        src="{{ url_for('static', filename='css/base/base_imgs/about_us.png')}}">
+    </div>
+</div>
+
+{% endblock %}
+
