@@ -24,7 +24,7 @@
             <i class="fa-solid fa-chevron-fown"></i>
         </button>
         <div class="pannel">
-            <p>PONER IMAGEN AQUI</p>
+            <img alt="" src="{{ url_for('static', filename='css/base/base_imgs/how_i_ship.png') }}">
         </div>
     </div>
 
@@ -62,10 +62,10 @@
             <i class="fa-solid fa-chevron-fown"></i>
         </button>
         <div class="pannel">
-            <p>Realizamos envíos dos veces a la semana (LUNES Y JUEVES), dando un plazo de (3)tres a (5)cinco días hábiles para recibir
+            <p>Realizamos envíos dos veces a la semana (<strong>LUNES Y JUEVES</strong>), dando un plazo de (3)tres a (5)cinco días hábiles para recibir
             tu pedido. Es decir que si realizaste tu pago un día MARTES, tu pedido se despacha el JUEVES y a partir de ahí comienzas
-            a contar el tiempo del plazo.
-                PONER IMAGEN AQUI
+            a contar el tiempo del plazo. <br>
+            <img alt="" src="{{ url_for('static', filename='css/base/base_imgs/order_time.png') }}">
             </p>
         </div>
     </div>
@@ -90,7 +90,7 @@
             <i class="fa-solid fa-chevron-fown"></i>
         </button>
         <div class="pannel">
-            <p>¡Si! En Ukituki Store ofrecemos una variedad de productos para pedidos mínimo de $120.000COP. Contáctanos para obtener
+            <p><strong>¡Si!</strong> En Ukituki Store ofrecemos una variedad de productos para pedidos mínimo de <strong>$120.000COP.</strong> Contáctanos para obtener
             más información y solicitar el catálogo.
             </p>
         </div>
@@ -107,21 +107,18 @@
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
-                    // Si el panel está abierto, ciérralo y oculta su borderBottom
                     panel.style.maxHeight = null;
                     setTimeout(() => {
                         this.style.borderBottom = "2px solid #9D91FF";
-                        panel.style.borderBottom = "none"; // Ocultamos el borderBottom de panel cuando se cierra
-                    }, 700); // Agregamos un pequeño retraso (700ms) para dar tiempo al panel para cerrarse por completo
+                        panel.style.borderBottom = "none"; 
+                    }, 700); 
                 } else {
-                    // Si el panel está cerrado, ábrelo y muestra su borderBottom
                     panel.style.maxHeight = panel.scrollHeight + "px";
-                    this.style.borderBottom = "none"; // Ocultamos el borderBottom de accordion mientras se abre el panel
-                    panel.style.borderBottom = "2px solid #9D91FF"; // Mostramos el borderBottom de panel cuando se abre
+                    this.style.borderBottom = "none";
+                    panel.style.borderBottom = "2px solid #9D91FF";
                 }
             });
         }
     </script>
 {% endblock %}
 
-s

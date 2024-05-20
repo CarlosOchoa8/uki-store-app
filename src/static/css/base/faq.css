@@ -1,5 +1,8 @@
 .faq_wrapper {
     margin: 5%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .faq_wrapper>h1 {
@@ -41,6 +44,10 @@
     transition: max-height 0.5s ease-out;
     padding: 0 2rem;
     background-color: transparent;
+
+    img {
+        margin: 1%;
+    }
 }
 
 .pannel p {
