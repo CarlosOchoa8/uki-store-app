@@ -1,0 +1,51 @@
+.contact {
+    border: 2px solid hotpink;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(327px, 1fr) 2fr;
+    color: white;
+    font: normal normal normal 16px/1.4em questrial, sans-serif;
+}
+
+.customer_support {
+    background-color: rgba(90, 89, 172, .8);
+    background-blend-mode:darken;
+    position: relative;
+    display: grid;
+    border: 2px solid blue;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.customer_support>div {
+    margin: 10px 0;
+    /* Espaciado entre elementos */
+}
+
+.support_form {
+    border: 2px solid burlywood;
+}
+
+.raw {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    /* Alinea la imagen al final del contenedor */
+    justify-content: center;
+    /* Centra la imagen horizontalmente */
+
+    .paw {
+        /* max-width: 50px; */
+        /* Ajusta el tamaño de la imagen según sea necesario */
+        transform: rotate(90deg);
+        /* opacity: 0.8; */
+        /* Ajusta la opacidad según sea necesario */
+    }
+}
