@@ -8,7 +8,7 @@ class ContactUsForm(FlaskForm):
         DataRequired(),
         Length(min=5, max=100, message="El producto debe contener al menos 5 caracteres.")]
         )
-    last_name = StringField("Categoría", validators=[
+    last_name = StringField("Apellido", validators=[
         DataRequired(),
         Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
         )
