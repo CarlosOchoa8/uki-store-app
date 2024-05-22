@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} contacto {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/contact_us.css') }}">
+
+<div class="contact">
+    <div class="customer_support" style="background-image: url('{{ url_for("static", filename="css/base/base_imgs/faq_background.png") }}');">
+        <div>
+            <img src="{{ url_for('static', filename='css/base/base_imgs/ukituki-logo.png') }}">
+        </div>
+        <div>
+            <p>ATENCIÓN AL CLIENTE</p>
+        </div>
+        <div>
+            <p>Whatsapp: 323 8000125<br>
+            Instagram: @Ukituki_store<br>
+            Ukitukistore@gmail.com<br></p>
+        </div>
+        <div class="raw">
+            <img class="paw" src="{{ url_for('static', filename='css/base/base_imgs/patita.png') }}">
+        </div>
+    </div>
+    <div class="support_form">
+        <div>
+            A
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+
