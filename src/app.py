@@ -45,6 +45,13 @@ def frecuent_questions_answers():
     """
     return render_template("faq.html")
 
+@app.route("/contact_us", methods=["GET"])
+def contact_us():
+    """
+    Render template for faq html
+    """
+    return render_template("contact_us.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
