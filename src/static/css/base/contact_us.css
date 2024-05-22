@@ -37,7 +37,6 @@
     background-color: #E7E4FF;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-columns: auto auto;
     gap: 1rem;
@@ -69,7 +68,11 @@
 .message_form {
     grid-area: 4 / 1 / span 2 / span 2;
     border-bottom: 2px solid #4D4DA0;
-    
+}
+
+.form-group:focus-within {
+    border-bottom: none;
+    caret-color: #FD92FD;
 }
 
 .submit-field {
@@ -103,6 +106,12 @@ textarea {
 
 textarea {
     height: 100px;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    background-color: #E2D6FB;
 }
 
 .raw {
