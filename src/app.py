@@ -1,14 +1,11 @@
 """Init for Flask app module."""
 from flask import Flask, render_template
 
-from database.db import db
-from routes import (
-    auth_blueprint,
-    users_blueprint,
-    products_blueprint
-)
 import models
 from config2 import config
+from database.db import db
+from routes import auth_blueprint, products_blueprint, users_blueprint
+from forms.contact_forms import ContactUsForm
 
 app = Flask(__name__)
 app_config = config.Config()
@@ -50,7 +47,8 @@ def contact_us():
     """
     Render template for faq html
     """
-    return render_template("contact_us.html")
+    form = ContactUsForm()
+    return render_template("contact_us.html", form=form)
 
 
 if __name__ == "__main__":
