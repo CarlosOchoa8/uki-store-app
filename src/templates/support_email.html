@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Soporte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/support_email.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Notificación de Soporte</h1>
+        <p>Has recibido un nuevo mensaje de soporte de un usuario.</p>
+        <div class="user-details">
+            <p><strong>Nombre:</strong> {{ customer_name }} {{ customer_last_name }}</p>
+            <p><strong>Email:</strong> {{ customer_email }}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>{{ customer_message }}</p>
+        </div>
+        <div class="footer">
+            <p>Ukituki Store</p>
+        </div>
+    </div>
+</body>
+
+</html>
