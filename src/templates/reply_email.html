@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte al Cliente - Ukituki Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/support_email.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hola, {{ customer_name }}</h1>
+        <p>Gracias por contactarte con Ukituki Store. Hemos recibido tu mensaje y nuestro equipo de soporte al cliente
+            se pondrá en contacto contigo lo antes posible.</p>
+        <p>A continuación, te dejamos una copia de tu mensaje:</p>
+        <p><strong>Nombre:</strong> {{ customer_name }}</p>
+        <p><strong>Apellido:</strong> {{ customer_last_name }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ email }}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>{{ customer_message }}</p>
+        <p>Gracias por confiar en Ukituki Store.</p>
+        <p>Atentamente,<br>Equipo de Soporte al Cliente<br>Ukituki Store</p>
+        <div class="footer">
+            <p>Si tienes cualquier otra consulta, no dudes en responder a este correo o contactarnos a través de
+                nuestros canales oficiales.</p>
+        </div>
+    </div>
+</body>
+
+</html>
