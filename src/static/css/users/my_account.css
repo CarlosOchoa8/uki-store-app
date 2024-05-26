@@ -16,6 +16,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font: normal normal normal 16px/1.4em 'questrial', sans-serif;
 }
 
 .profile-header {
@@ -73,7 +74,34 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
+.form-field{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    box-sizing:border-box;
+
+}
+
+.submit-field {
+    background-color: #8f8fff;
+    border: 2px solid #8f8fff;
+    grid-column: span 2;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        color: white;
+        background-color: #9D91FFB3;
+        border: 1px solid #8f8fff;
+    }
+}
+
+
+/* input[type="text"],
 input[type="email"],
 input[type="tel"] {
     width: 100%;
@@ -81,9 +109,9 @@ input[type="tel"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-}
+} */
 
-button[type="submit"] {
+/* button[type="submit"] {
     background-color: #4D4DA0;
     color: #fff;
     padding: 10px 20px;
@@ -91,8 +119,8 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-}
+} */
 
-button[type="submit"]:hover {
+/* button[type="submit"]:hover {
     background-color: #333;
-}
+} */

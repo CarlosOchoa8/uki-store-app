@@ -23,24 +23,49 @@
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="profile-info">
-                    <form>
+                    <form action="" method="POST" novalidate>
+                        {{ form.hidden_tag() }}
                         <div class="form-group">
-                            <label for="first_name">Nombre:</label>
-                            <input type="text" id="first_name" name="first_name" value="{{ g.user.first_name }}">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-field first_name-field", placeholder=g.user.first_name) }}
+                            {% for error in form.first_name.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="first_name">Nombre:</label>
+                            <input type="text" id="first_name" name="first_name" placeholder="{{ g.user.first_name }}"> -->
                         </div>
                         <div class="form-group">
-                            <label for="last_name">Apellido:</label>
-                            <input type="text" id="last_name" name="last_name" value="{{ g.user.last_name }}">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-field last_name-field", placeholder=g.user.last_name) }}
+                            {% for error in form.last_name.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="last_name">Apellido:</label>
+                            <input type="text" id="last_name" name="last_name" placeholder="{{ g.user.last_name }}"> -->
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" value="{{ g.user.email }}">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-field email-field", placeholder=g.user.email) }}
+                            {% for error in form.email.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="{{ g.user.email }}"> -->
                         </div>
                         <div class="form-group">
-                            <label for="phone">Teléfono:</label>
-                            <input type="tel" id="phone" name="phone" value="{{ g.user.phone }}">
+                            {{ form.phone_number.label(class="form-label") }}
+                            {{ form.phone_number(class="form-field phone_number-field", placeholder=g.user.phone_number) }}
+                            {% for error in form.phone_number.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="phone">Teléfono:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="{{ g.user.phone }}"> -->
                         </div>
-                        <button type="submit">Guardar Cambios</button>
+                        <!-- <button type="submit">Guardar Cambios</button> -->
+                        <!-- {{ form.csrf_token }} -->
+                        {{ form.submit(class="btn form-field submit-field", type="submit")}}
+                        <!-- {{ form.hidden_tag() }}
+                        {{ form.submit(class="btn form-field submit-field", type="submit")}} -->
                     </form>
                 </div>
                 <div class="tab-pane" id="orders">
