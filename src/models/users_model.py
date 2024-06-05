@@ -8,6 +8,7 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     phone_number = db.Column(db.String(13), nullable=True, unique=True)
+    address = db.relationship("Address", backref="user")
 
     # TODO Averiguar como mandar un null a la base de datos
     def __init__(self, **kwargs):

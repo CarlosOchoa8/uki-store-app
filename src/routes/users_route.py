@@ -1,31 +1,49 @@
-from db_crud.users_crud import user_crud
-from flask import Blueprint, request, jsonify, render_template, redirect, flash, g, url_for
-from database.db import db
-from models import User
+"""Users route."""
+from flask import (Blueprint, flash, g, redirect, render_template, request,
+                   url_for)
+
 from auth.services import get_current_user
-from forms import UserUpdateForm 
+from db_crud.users_crud import user_crud
+from forms import UserUpdateForm, AddressCreateForm
+from models import User
 
 users_blueprint = Blueprint("users", __name__)
 
 
-@users_blueprint.route("/account", methods=["GET", "POST"])
+@users_blueprint.route("/mi-cuenta", methods=["GET", "POST"])
 @get_current_user
 def my_account():
+    """User proffile route."""
     form = UserUpdateForm()
-    form_in = form.data
-
+    address_form = AddressCreateForm()
     if request.method == "POST" and form.validate_on_submit():
-        if not User.query.filter(User.email == form_in["email"] or
-                                        User.phone_number == form_in["phone_number"]).first():
-            db_user = User.query.filter_by(email=g.user.email).first()
-            user_crud.update(obj_in=form_in, db_obj=db_user)
-            return redirect(url_for("index"))
+        form_dict = {field: value for field, value in form.data.items() if value not in (None, '', [])}
 
-        else:
-            error = (f"El correo {form.data['email']} o teléfono {form.data['phone_number']} "
-                     f"ya se encuentran registrados.")
-            flash(error)
-    return render_template("users/account/my_account.html", form=form)
+        if "email" in form_dict and User.query.filter(User.email == form_dict["email"]).first():
+            flash(f"El correo {form.data['email']} ya se encuentra registado.")
+            return redirect(url_for("users.my_account"))
+
+        if "phone_number" in form_dict and User.query.filter(User.phone_number == form_dict["phone_number"]).first():
+            flash(f"El telefono {form.data['phone_number']} ya se encuentra registado.")
+            return redirect(url_for("users.my_account"))
+
+        if "email" and "phone_number" not in form_dict:
+            db_user = User.query.filter_by(email=g.user.email).first()
+            user_crud.update(obj_in=form_dict, db_obj=db_user)
+            return redirect(url_for("users.my_account"))
+
+        db_user = User.query.filter(User.email == g.user.email).first()
+        user_crud.update(obj_in= form_dict, db_obj= db_user)
+        return redirect(url_for("users.my_account"))
+
+    return render_template("users/account/account_base.html")
+
+
+@users_blueprint.route("mis-direcciones", methods=["GET", "POST"])
+def my_addresses() -> str:
+    """Return user logged addresses."""
+    form = AddressCreateForm()
+    return render_template("users/account/my_addresses.html", address_form=form)
 
 
 @users_blueprint.route("/update")

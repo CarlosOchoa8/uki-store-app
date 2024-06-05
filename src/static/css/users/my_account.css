@@ -1,63 +1,126 @@
-._separator{
-    border-width:0;color:white;
-    background-color: white;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-.visible_separator{
-    width: 90%;
-    color: dimgray;
+.profile-section {
+    padding: 20px;
 }
 
-.card{
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font: normal normal normal 16px/1.4em 'questrial', sans-serif;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: none;
     border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.col{
-    position: relative;
-    height: 300px;
-    align-items: center;
+.tab-button.active {
+    border-bottom: 2px solid #4D4DA0;
+    color: #4D4DA0;
 }
 
-.first_name_section{
-    position: absolute;
-    width: 35%;
-    left: 2%;
+.tab-content .tab-pane {
+    display: none;
 }
 
-.last_name_section{
-    position: absolute;
-    width: 35%;
-    right: 10%;
+.tab-content .tab-pane.active {
+    display: block;
 }
 
-.email_section{
-    position: absolute;
-    width: 35%;
-    left: 2%;
-    bottom: 50%;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.phone_number_section{
-    position: absolute;
-    width: 35%;
-    bottom: 50%;
-    right: 10%;
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.submit_section{
-    position: absolute;
-    top: 80%;
-    left: 80%;
-    border: 1px solid #9d91ff;
-    background-color: #9d91ff;
-    transform: translate(-50%, -50%);
+.form-field{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    box-sizing:border-box;
+
 }
 
-.form-control{
-        border: 1px solid darkgray;
-        border-radius: 0;
+.submit-field {
+    background-color: #8f8fff;
+    border: 2px solid #8f8fff;
+    grid-column: span 2;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        color: white;
+        background-color: #9D91FFB3;
+        border: 1px solid #8f8fff;
     }
-
-span{
-    color: red;
 }
+
+
+/* input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+} */
+
+/* button[type="submit"] {
+    background-color: #4D4DA0;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+} */
+
+/* button[type="submit"]:hover {
+    background-color: #333;
+} */

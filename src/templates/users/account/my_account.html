@@ -1,68 +1,108 @@
-{% extends 'users/account/account_base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-{#    TODO Esto soluciona heredar lo que existe en account_base, solo lo de base lo hereda#}
-    {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users/my_account.css') }}" >
-    <hr class="_separator">
-    <div class="container col-md-7">
-        <div class="row justify-content-center">
-            <hr class="visible_separator">
-            <h3 class="text-center">Cuenta</h3>
-            <label class="text-center">Actualiza tu información personal.</label>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="col my">
-                            <form action="" method="post" >
-                                <div class="form-group first_name_section">
-                                    {{ form.first_name.label }}
-                                    {{ form.first_name(class="form-control mt-2", required=True) }}
-                                    {% for error in form.first_name.errors %}
-                                        <span> {{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                <div class="form-group last_name_section">
-                                    {{ form.last_name.label }}
-                                    {{ form.last_name(class="form-control mt-2", required=True) }}
-                                    {% for error in form.last_name.errors %}
-                                        <span> {{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                <div class="form-group email_section">
-                                    {{ form.email.label }}
-                                    {{ form.email(class="form-control mt-2", required=True) }}
-                                    {% for error in form.email.errors %}
-                                        <span> {{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                <div class="form-group phone_number_section">
-                                    {{ form.phone_number.label }}
-                                    {{ form.phone_number(class="form-control mt-2 ", required=True) }}
-                                    {% for error in form.phone_number.errors %}
-                                        <span> {{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                {{ form.hidden_tag() }}
-                                <div class="text-center submit_section">
-                                    {{ form.submit(class="btn", type="submit") }}
-                                </div>
-                            </form>
+{# TODO Esto soluciona heredar lo que existe en account_base, solo lo de base lo hereda#}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users/my_account.css') }}">
+
+<section class="profile-section">
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='css/base/base_imgs/about_us.png') }}" alt="Foto de perfil">
+            </div>
+            <h2>{{ g.user.first_name }} {{ g.user.last_name }}</h2>
+        </div>
+        <div class="profile-body">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="profile-info">Mi Cuenta</button>
+                <button class="tab-button" data-tab="orders">Mis Pedidos</button>
+                <button class="tab-button" data-tab="addresses">Mis Direcciones</button>
+                <button class="tab-button" data-tab="wallet">Mi Billetera</button>
+                <button class="tab-button" data-tab="subscriptions">Mis Suscripciones</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="profile-info">
+                    <form action="" method="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-field first_name-field", placeholder=g.user.first_name) }}
+                            {% for error in form.first_name.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="first_name">Nombre:</label>
+                            <input type="text" id="first_name" name="first_name" placeholder="{{ g.user.first_name }}"> -->
                         </div>
-                    </div>
+                        <div class="form-group">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-field last_name-field", placeholder=g.user.last_name) }}
+                            {% for error in form.last_name.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="last_name">Apellido:</label>
+                            <input type="text" id="last_name" name="last_name" placeholder="{{ g.user.last_name }}"> -->
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-field email-field", placeholder=g.user.email) }}
+                            {% for error in form.email.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="{{ g.user.email }}"> -->
+                        </div>
+                        <div class="form-group">
+                            {{ form.phone_number.label(class="form-label") }}
+                            {{ form.phone_number(class="form-field phone_number-field", placeholder=g.user.phone_number) }}
+                            {% for error in form.phone_number.errors %}
+                            <span style="color: red"> {{ error }}</span>
+                            {% endfor %}
+                            <!-- <label for="phone">Teléfono:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="{{ g.user.phone }}"> -->
+                        </div>
+                        <!-- <button type="submit">Guardar Cambios</button> -->
+                        <!-- {{ form.csrf_token }} -->
+                        {{ form.submit(class="btn form-field submit-field", type="submit")}}
+                        <!-- {{ form.hidden_tag() }}
+                        {{ form.submit(class="btn form-field submit-field", type="submit")}} -->
+                    </form>
                 </div>
+                <div class="tab-pane" id="orders">
+                    <p>Aquí estarán tus pedidos.</p>
+                </div>
+                <div class="tab-pane" id="addresses">
+                    <p>Aquí estarán tus direcciones.</p>
+                </div>
+                <div class="tab-pane" id="wallet">
+                    <p>Aquí estará tu billetera.</p>
+                </div>
+                <div class="tab-pane" id="subscriptions">
+                    <p>Aquí estarán tus suscripciones.</p>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const target = this.getAttribute('data-tab');
+
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                this.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+    });
+</script>
 
 
-{%  endblock %}
-{#    {% for message in get_flashed_messages() %}#}
-{#    <div class="container mt-3">#}
-{#        <div class="row">#}
-{#            <div class="col-md-6 mx-auto">#}
-{#                <div class="alert alert-danger" role="alert">#}
-{#                    {{ message }}#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#    {% endfor %}#}
+{% endblock %}
