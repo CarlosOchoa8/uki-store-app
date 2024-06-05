@@ -10,39 +10,39 @@ class AddressCreateForm(FlaskForm):
         DataRequired(),
         Length(min=5, max=100, message="El producto debe contener al menos 5 caracteres.")]
         )
-    last_name = StringField("Nombre", validators=[
+    last_name = StringField("Apellido", validators=[
         DataRequired(),
         Length(min=5, max=100, message="El producto debe contener al menos 5 caracteres.")]
         )
-    company_name = StringField("Categoría", validators=[
+    company_name = StringField("Nombre de la empresa", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="El nombre de la empresa debe contener al menos 5 caracteres.")]
         )
-    address = StringField("Categoría", validators=[
+    address = StringField("Dirección", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="La dirección debe contener al menos 5 caracteres.")]
         )
-    address_detail = StringField("Categoría", validators=[
+    address_detail = StringField("Dirección - Línea 2", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="La referencia debe contener al menos 5 caracteres.")]
         )
-    city = StringField("Categoría", validators=[
+    city = StringField("Ciudad", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="La ciudad debe contener al menos 5 caracteres.")]
         )
     country = StringField("País", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La categoría debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="El pais debe contener al menos 5 caracteres.")]
         )
-    country_region = StringField("Referencia", validators=[
+    country_region = StringField("Región", validators=[
         DataRequired(),
-        Length(min=5, max=100, message="La Referencia de la calle debe contener al menos 5 caracteres.")]
+        Length(min=5, max=100, message="La región de la calle debe contener al menos 5 caracteres.")]
         )
-    postal_code = StringField("Codigo póstal.", validators=[
+    postal_code = StringField("Código póstal.", validators=[
         DataRequired(),
         Length(min=5, max=25, message="El código postal debe contener al menos 5 caracteres.")]
         )
-    phone_number = StringField("Número de teléfono", validators=[
+    phone_number = StringField("Teléfono", validators=[
         DataRequired(),
         Length(min=5, max=100, message="El número telefónico debe contener al menos 5 caracteres.")]
         )
