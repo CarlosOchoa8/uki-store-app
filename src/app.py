@@ -1,13 +1,16 @@
 """Init for Flask app module."""
-from typing import Any
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Mail, Message
 from smtplib import SMTPException
+from typing import Any
+
+from flask import Flask, flash, redirect, render_template, request, url_for
+from flask_mail import Mail, Message
+
 import models
 from config2 import config
 from database.db import db
-from routes import auth_blueprint, products_blueprint, users_blueprint, main_blueprint
 from forms.contact_forms import ContactUsForm
+from routes import (address_blueprint, auth_blueprint, main_blueprint,
+                    products_blueprint, users_blueprint)
 
 app = Flask(__name__)
 class PrefixMiddleware:
