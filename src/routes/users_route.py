@@ -4,7 +4,7 @@ from flask import (Blueprint, flash, g, redirect, render_template, request,
 
 from auth.services import get_current_user
 from db_crud.users_crud import user_crud
-from forms import UserUpdateForm
+from forms import UserUpdateForm, AddressCreateForm
 from models import User
 
 users_blueprint = Blueprint("users", __name__)
@@ -15,7 +15,7 @@ users_blueprint = Blueprint("users", __name__)
 def my_account():
     """User proffile route."""
     form = UserUpdateForm()
-
+    address_form = AddressCreateForm()
     if request.method == "POST" and form.validate_on_submit():
         form_dict = {field: value for field, value in form.data.items() if value not in (None, '', [])}
 
@@ -36,7 +36,14 @@ def my_account():
         user_crud.update(obj_in= form_dict, db_obj= db_user)
         return redirect(url_for("users.my_account"))
 
-    return render_template("users/account/my_account.html", form=form)
+    return render_template("users/account/account_base.html")
+
+
+@users_blueprint.route("mis-direcciones", methods=["GET", "POST"])
+def my_addresses() -> str:
+    """Return user logged addresses."""
+    form = AddressCreateForm()
+    return render_template("users/account/my_addresses.html", address_form=form)
 
 
 @users_blueprint.route("/update")
