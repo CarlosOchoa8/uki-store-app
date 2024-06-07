@@ -35,8 +35,8 @@ def my_account():
         db_user = User.query.filter(User.email == g.user.email).first()
         user_crud.update(obj_in= form_dict, db_obj= db_user)
         return redirect(url_for("users.my_account"))
-
-    return render_template("users/account/account_base.html")
+    print("VERASDASDS")
+    return render_template("users/account/my_account.html", form=form)
 
 
 @users_blueprint.route("mis-direcciones", methods=["GET", "POST"])
