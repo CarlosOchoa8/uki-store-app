@@ -11,83 +11,94 @@
 <!-- Modal Structure -->
 <div id="modalBackground" class="modal-background"></div>
 <div id="addAddressModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
+    <div class="modal-title">
         <h2>Agregar Nueva Dirección</h2>
-        <form action="#" method="POST">
+        <span class="close">&times;</span>
+    </div>
+    <div class="modal-content">
+        <form class="form-container" action="#" method="POST">
             {{ address_form.hidden_tag() }}
-            <div class="form-group">
+            <div class="form-group first-name-form">
                 {{ address_form.first_name.label(class="form-label") }}
                 {{ address_form.first_name(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group last-name-form">
                 {{ address_form.last_name.label(class="form-label") }}
                 {{ address_form.last_name(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group company-name-form">
                 {{ address_form.company_name.label(class="form-label") }}
                 {{ address_form.company_name(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group address-form">
                 {{ address_form.address.label(class="form-label") }}
                 {{ address_form.address(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group address-detail-form">
                 {{ address_form.address_detail.label(class="form-label") }}
                 {{ address_form.address_detail(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group city-form">
                 {{ address_form.city.label(class="form-label") }}
                 {{ address_form.city(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group country-form">
                 {{ address_form.country.label(class="form-label") }}
                 {{ address_form.country(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group region-form">
                 {{ address_form.country_region.label(class="form-label") }}
                 {{ address_form.country_region(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group postal-code-form">
                 {{ address_form.postal_code.label(class="form-label") }}
                 {{ address_form.postal_code(class="form-control") }}
             </div>
-            <div class="form-group">
+            <div class="form-group phone-number-form">
                 {{ address_form.phone_number.label(class="form-label") }}
                 {{ address_form.phone_number(class="form-control") }}
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Dirección</button>
+            <div class="form-group submit-field-form">
+                {{ address_form.submit(class="btn form-field submit-field-form", type="submit") }}
+            </div>
         </form>
     </div>
 </div>
 
-
 <script>
-    // Obtén el modal
-    var modal = document.getElementById("addAddressModal");
+    document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById("addAddressModal");
+            var modalBackground = document.getElementById("modalBackground");
+            var btn = document.getElementById("openModalBtn");
+            var span = document.getElementsByClassName("close")[0];
 
-    // Obtén el botón que abre el modal
-    var btn = document.getElementById("openModalBtn");
+            // Función para cerrar el modal
+            function closeModal() {
+                modal.style.display = "none";
+                modalBackground.style.display = "none";
+            }
 
-    // Obtén el elemento <span> que cierra el modal
-    var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function () {
+                modal.style.display = "block";
+                modalBackground.style.display = "block";
+            }
 
-    // Cuando el usuario hace clic en el botón, abre el modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
+            span.onclick = function () {
+                closeModal();
+            }
 
-    // Cuando el usuario hace clic en <span> (x), cierra el modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+            window.onclick = function (event) {
+                if (event.target == modalBackground) {
+                    closeModal();
+                }
+            }
 
-    // Cuando el usuario hace clic fuera del modal, ciérralo
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+            document.addEventListener('keydown', function (event) {
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+            });
+        });
 </script>
 
 {% endblock %}
