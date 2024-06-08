@@ -83,4 +83,10 @@ def contact_us():
     return render_template("contact_us.html", form=form)
 
 
+@main_blueprint.route("/gift-card", methods=["GET", "POST"])
+def gift_cards():
+    """Render gift cards html."""
+    return render_template("giftcards.html")
+
+
 main_route = main_blueprint

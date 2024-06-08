@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %} Sobre Nosotros {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base/giftcard.css') }}">
+
+<section class="gift-card-section">
+    <div class="giftcard-section">
+        <div class="giftcard-left">
+            <img src="{{ url_for('static', filename='css/base/base_imgs/how_i_ship.png') }}" alt="Gift Card" class="giftcard-image">
+        </div>
+        <div class="giftcard-right">
+            <div class="giftcard-message">
+                <h2>¡Un hermoso detallito!</h2>
+                <div class="price-display">$ 25.000</div>
+                <p>¿Se te complica elegir un regalito para esa persona especial? ¡Las tarjetas de regalo nunca fallan!<br>
+                    Elige un monto y escribe un mensaje bonito.</p>
+            </div>
+            <div class="value-selector">
+                <button class="value-button active" data-value="25000">$25.000</button>
+                <button class="value-button" data-value="50000">$50.000</button>
+                <button class="value-button" data-value="100000">$100.000</button>
+            </div>
+            <form class="giftcard-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="amount">Cantidad</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-email">Email del destinatario</label>
+                    <input type="email" id="recipient-email" name="recipient-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name">Nombre del destinatario</label>
+                    <input type="text" id="recipient-name" name="recipient-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Comprar</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.value-button');
+            var priceDisplay = document.querySelector('.price-display');
+
+            buttons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    buttons.forEach(function (btn) {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    var value = button.getAttribute('data-value');
+                    priceDisplay.textContent = `$ ${parseInt(value).toLocaleString()}`;
+                });
+            });
+        });
+</script>
+
+{% endblock %}
+
