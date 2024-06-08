@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.giftcard-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.giftcard-left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.giftcard-image {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.giftcard-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* Ensure alignment to left */
+    max-width: 50%;
+    /* Limit the width of the right column's content */
+    margin: 0;
+    /* Remove centering */
+    padding: 0;
+    /* Optional: Remove any padding */
+}
+
+.giftcard-message {
+    margin-bottom: 1rem;
+    text-align: left;
+    /* Align text to the left */
+}
+
+.giftcard-message h2 {
+    margin: 0;
+}
+
+.giftcard-message .price-display {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin: 0.5rem 0;
+}
+
+.value-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.value-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.value-button:hover,
+.value-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.giftcard-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+    /* Align text to the left */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    /* Center text in the button */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .giftcard-section {
+        grid-template-columns: 1fr;
+    }
+
+    .giftcard-left,
+    .giftcard-right {
+        justify-content: flex-start;
+        /* Ensure left alignment */
+    }
+
+    .giftcard-image {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .giftcard-right {
+        max-width: 100%;
+        /* Allow the right column to expand to full width */
+        width: 100%;
+        /* Ensure full width */
+    }
+}
