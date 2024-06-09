@@ -8,7 +8,9 @@
 <section class="gift-card-section">
     <div class="giftcard-section">
         <div class="giftcard-left">
-            <img src="{{ url_for('static', filename='css/base/base_imgs/how_i_ship.png') }}" alt="Gift Card" class="giftcard-image">
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='css/base/base_imgs/gift_card.png') }}" alt="Gift Card" class="giftcard-image">
+            </div>
         </div>
         <div class="giftcard-right">
             <div class="giftcard-message">
@@ -17,16 +19,29 @@
                 <p>¿Se te complica elegir un regalito para esa persona especial? ¡Las tarjetas de regalo nunca fallan!<br>
                     Elige un monto y escribe un mensaje bonito.</p>
             </div>
+            <div>
+                <p style="font: normal normal normal 18px 'questrial', sans-serif;">Monto</p>
+            </div>
             <div class="value-selector">
                 <button class="value-button active" data-value="25000">$25.000</button>
                 <button class="value-button" data-value="50000">$50.000</button>
                 <button class="value-button" data-value="100000">$100.000</button>
+                <button class="value-button" data-value="150000">$150.000</button>
+                <button class="value-button" data-value="200000">$200.000</button>
             </div>
             <form class="giftcard-form" action="#" method="POST">
                 <div class="form-group">
                     <label for="amount">Cantidad</label>
-                    <input type="number" id="amount" name="amount" required>
+                    <div class="quantity-container">
+                        <button type="button" class="quantity-button" id="decrement">-</button>
+                        <input type="" id="amount" name="amount" value="1" min="1" required>
+                        <button type="button" class="quantity-button" id="increment">+</button>
+                    </div>
                 </div>
+                <!-- <div class="form-group">
+                    <label for="amount">Cantidad</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div> -->
                 <div class="form-group">
                     <label for="recipient-email">Email del destinatario</label>
                     <input type="email" id="recipient-email" name="recipient-email" required>
@@ -47,6 +62,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+            // Botones de valor
             var buttons = document.querySelectorAll('.value-button');
             var priceDisplay = document.querySelector('.price-display');
 
@@ -59,6 +75,23 @@
                     var value = button.getAttribute('data-value');
                     priceDisplay.textContent = `$ ${parseInt(value).toLocaleString()}`;
                 });
+            });
+
+            // Botones de cantidad
+            var decrementButton = document.getElementById('decrement');
+            var incrementButton = document.getElementById('increment');
+            var amountInput = document.getElementById('amount');
+
+            decrementButton.addEventListener('click', function () {
+                var currentValue = parseInt(amountInput.value);
+                if (currentValue > 1) {
+                    amountInput.value = currentValue - 1;
+                }
+            });
+
+            incrementButton.addEventListener('click', function () {
+                var currentValue = parseInt(amountInput.value);
+                amountInput.value = currentValue + 1;
             });
         });
 </script>
