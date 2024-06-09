@@ -1,101 +1,123 @@
-.footer_container{
-    position: relative; 
-    width: 100%; 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
 
-    .footer_{
-        position: absolute; 
-        height: 30vh; 
-        padding-top: 3%; 
-        width: 100%;
-    }
+.navbar {
+    background-color: #9e91ff;
+    height: 85px;
+}
 
-    .left_column{
-        float: left; 
-        width: 50%; 
-        height: 75%; 
-        border-right: 5px dotted #fd92fd;
-        
-        .left_inside_column{
-            position: relative; 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: space-evenly; 
-            align-items: center; 
-            width: 100%; 
-            height: 100%;
-            
-            img{
-                max-width: 100%; 
-                max-height: 100%
-            }
+.content {
+    flex: 1;
+    /* Se expande para llenar el espacio disponible */
+}
 
-            .links{
-                position: relative; 
-                max-width: 100%; 
-                max-height: 100%;
-                
-                p{
-                    margin: 6px 0; 
-                    font-size: 16px;
-                }
+.footer_container {
+    position: relative;
+    width: 100%;
+}
 
-                a{
-                    text-decoration: none;
-                    font: normal normal normal 15px / 1.4em 'questrial', sans-serif;
-                    color: rgb(31, 31, 31);
-                }
-            }
-        }
-    }
-    
-    .right_column{
-        display: flex; 
-        float: left; 
-        width: 50%; 
-        height: 75%; 
-        border-left: 5px dotted #fd92fd;
+.footer_ {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    height: 30vh;
+    padding-top: 3%;
+    width: 100%;
+}
 
-        .right_inside_column{
-            position: relative; 
-            display: flex; 
-            flex-direction: column; 
-            width: 50%; 
-            height: 100%; 
-            justify-content: center; 
-            align-items: center;
+.left_column {
+    height: 75%;
+    border-right: 5px dotted #fd92fd;
+}
 
-            .schedule{
-                letter-spacing: .25em; 
-                font: normal normal bold 24px / 1.4em 'varela round', sans-serif;
-                color: #4d4da0;
-            }
+.left_inside_column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 
-            .sub_schedule{
-                margin: 1px 0; 
-                font: normal normal normal 14px / 1.4em 'questrial', sans-serif; 
-                color: black;
-            }
+.left_inside_column img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
-            .client_service{
-                margin-top: 15px;
-                font: normal normal normal 14px / 1.4em 'questrial', sans-serif;
-                color: #9e91ff;
-            }
+.links {
+    max-width: 100%;
+    max-height: 100%;
+}
 
-            .social_icons{
-                display: flex; 
-                flex-direction: row;
+.links p {
+    margin: 6px 0;
+    font-size: 16px;
+}
 
-                img{
-                    max-width: 100%;
-                     max-height: 100%;
-                }
+.links a {
+    text-decoration: none;
+    font: normal normal normal 15px / 1.4em 'questrial', sans-serif;
+    color: rgb(31, 31, 31);
+}
 
-                a{
-                    max-width: 100%;
-                     max-height: 100%;
-                }
-            }
-        }
-    }
+.center_column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dotted_line {
+    width: 1px;
+    height: 100%;
+    /* border-right: 2px dotted #fd92fd; */
+}
+
+.right_column {
+    display: flex;
+    height: 75%;
+    /* border-left: 5px dotted #fd92fd; */
+    justify-content: center;
+    align-items: center;
+}
+
+.right_inside_column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule {
+    letter-spacing: .25em;
+    font: normal normal bold 24px / 1.4em 'varela round', sans-serif;
+    color: #4d4da0;
+}
+
+.sub_schedule {
+    margin: 1px 0;
+    font: normal normal normal 14px / 1.4em 'questrial', sans-serif;
+    color: black;
+}
+
+.client_service {
+    margin-top: 15px;
+    font: normal normal normal 14px / 1.4em 'questrial', sans-serif;
+    color: #9e91ff;
+}
+
+.social_icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.social_icons img,
+.social_icons a {
+    max-width: 100%;
+    max-height: 100%;
 }
