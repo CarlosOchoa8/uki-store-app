@@ -12,7 +12,8 @@
 }
 
 .faq_wrapper {
-    margin: 5%;
+    padding-top: 5%;
+    padding-bottom: 2%;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -20,7 +21,8 @@
 
 .faq_wrapper>h1 {
     text-align: center;
-    margin: 1.5rem 0;
+    /* margin: 1.5rem 0; */
+    /* padding-bottom: 1.5rem; */
     letter-spacing: .25em;
     color: #4D4DA0;
     font: normal normal bold 24px/1.4em 'varela round', sans-serif;

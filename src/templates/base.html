@@ -76,11 +76,11 @@
               </span>
           </li>
           <li>
-              <a class="nav-link" href="{{url_for("auth.logout")}}">Cerrar sesión</a>
+            <a class="nav-link" href="{{url_for("auth.logout")}}">Cerrar sesión</a>
           </li>
           {% else %}
           <li>
-              <a class="nav-link" href="{{ url_for("auth.sign_up") }}">Iniciar sesión</a>
+            <a class="nav-link" href="{{ url_for("auth.sign_up") }}">Iniciar sesión</a>
           </li>
           {% endif %}
       </ul>
@@ -93,39 +93,51 @@
   </div>
 </nav>
 
+  <div class="content">
     {% block content %}
     {% endblock %}
-
-    <div class="footer_container">
-        <footer class="footer_">
-                <div class="left_column">
-                    <div class="left_inside_column">
-                        <img loading="lazy" src="https://static.wixstatic.com/media/e673e0_fb4a40c6bee349f8bf2e7b764ebbe988~mv2.png/v1/fill/w_207,h_168,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e673e0_fb4a40c6bee349f8bf2e7b764ebbe988~mv2.png" alt="">
-                        <div class="links">
-                            <p><a href="#">Inicio</a></p>
-                            <p><a href="#">Nosotros</a></p>
-                            <p><a href="#">Tienda</a></p>
-                            <p><a href="#">Contacto</a></p>
-                            <p><a href="#">Métodos de pago</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_column">
-                    <div class="right_inside_column">
-                        <span class="schedule">HORARIO</span>
-                        <p class="sub_schedule">Lunes a Sábados: 09:00 a.m : 08:00 p.m</p>
-                        <p class="sub_schedule">Domingo: 10:00 a.m : 05:00 p.m</p>
-                        <p class="sub_schedule">Festivos sin atención.</p>
-                        <p class="client_service"><b>Servicio a cliente:</b></p>
-                        <div class="social_icons">
-                            <img loading="lazy" src="" alt="">
-                            <a href="https://api.whatsapp.com/send/?phone=573238000125&text&type=phone_number&app_absent=0" target="blank_"><img loading="lazy" src="https://static.wixstatic.com/media/11062b_1db239e728f641c3a3be5b7ca708f239~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_1db239e728f641c3a3be5b7ca708f239~mv2.png" alt=""></a>
-                            <a href="https://www.instagram.com/ukituki_store/" target="blank_"><img loading="lazy" src="https://static.wixstatic.com/media/11062b_55e4be1e75564866b6c28290f9a9d271~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_55e4be1e75564866b6c28290f9a9d271~mv2.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-        </footer>
-    </div>
+  </div>
+  
+  <div class="footer_container">
+    <footer class="footer_">
+      <div class="left_column">
+        <div class="left_inside_column">
+          <img loading="lazy"
+            src="https://static.wixstatic.com/media/e673e0_fb4a40c6bee349f8bf2e7b764ebbe988~mv2.png/v1/fill/w_207,h_168,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e673e0_fb4a40c6bee349f8bf2e7b764ebbe988~mv2.png"
+            alt="">
+          <div class="links">
+            <p><a href="#">Inicio</a></p>
+            <p><a href="#">Nosotros</a></p>
+            <p><a href="#">Tienda</a></p>
+            <p><a href="#">Contacto</a></p>
+            <p><a href="#">Métodos de pago</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="center_column">
+        <div class="dotted_line"></div>
+      </div>
+      <div class="right_column">
+        <div class="right_inside_column">
+          <span class="schedule">HORARIO</span>
+          <p class="sub_schedule">Lunes a Sábados: 09:00 a.m : 08:00 p.m</p>
+          <p class="sub_schedule">Domingo: 10:00 a.m : 05:00 p.m</p>
+          <p class="sub_schedule">Festivos sin atención.</p>
+          <p class="client_service"><b>Servicio a cliente:</b></p>
+          <div class="social_icons">
+            <img loading="lazy" src="" alt="">
+            <a href="https://api.whatsapp.com/send/?phone=573238000125&text&type=phone_number&app_absent=0"
+              target="blank_"><img loading="lazy"
+                src="https://static.wixstatic.com/media/11062b_1db239e728f641c3a3be5b7ca708f239~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_1db239e728f641c3a3be5b7ca708f239~mv2.png"
+                alt=""></a>
+            <a href="https://www.instagram.com/ukituki_store/" target="blank_"><img loading="lazy"
+                src="https://static.wixstatic.com/media/11062b_55e4be1e75564866b6c28290f9a9d271~mv2.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_55e4be1e75564866b6c28290f9a9d271~mv2.png"
+                alt=""></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 
     {% for message in get_flashed_messages() %}
     <div class="container mt-3">
