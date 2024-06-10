@@ -52,6 +52,10 @@ def my_subcriptions() -> str:
     return render_template("users/account/my_subcriptions.html")
 
 
+@users_blueprint.route("mi-billetera", methods=["GET"])
+def my_wallet() -> str:
+    """Return user logged wallet."""
+    return render_template("users/account/my_wallet.html")
 
 
 @users_blueprint.route("/update")
