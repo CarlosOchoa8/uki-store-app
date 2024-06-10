@@ -24,7 +24,8 @@
                 <button class="tab-button {% if active_tab == 'wallet' %}active{% endif %}" data-url="#"
                     data-tab="wallet">Mi Billetera</button>
                 <button class="tab-button {% if active_tab == 'subscriptions' %}active{% endif %}"
-                    data-url="#" data-tab="subscriptions">Mis Suscripciones</button>
+                    data-url="{{ url_for('users.my_subcriptions') }}" 
+                    data-tab="subscriptions">Mis Suscripciones</button>
             </div>
             <div class="tab-content">
                 <div class="tab-pane" id="profile-info">
@@ -45,7 +46,8 @@
                     <p>Aquí estará tu billetera.</p>
                 </div>
                 <div class="tab-pane" id="subscriptions">
-                    <p>Aquí estarán tus suscripciones.</p>
+                    {% block subcriptions %}
+                    {% endblock %}
                 </div>
             </div>
         </div>

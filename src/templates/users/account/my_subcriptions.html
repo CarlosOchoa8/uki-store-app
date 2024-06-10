@@ -1,0 +1,16 @@
+{% extends 'users/account/account_base.html' %}
+{% block content %}
+{{ super() }}
+{% endblock %}
+
+{% block subcriptions %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users/my_subcriptions.css') }}">
+<div class="subscriptions-container">
+    <div class="border-line"></div>
+    <div class="message">
+        <h4>No hay suscripciones compradas</h4>
+        <p>Cuando compres una suscripción, aparecerá aquí.</p>
+    </div>
+    <div class="border-line"></div>
+</div>
+{% endblock %}
