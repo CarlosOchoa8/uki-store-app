@@ -1,0 +1,16 @@
+{% extends 'users/account/account_base.html' %}
+{% block content %}
+{{ super() }}
+{% endblock %}
+
+{% block wallet %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users/my_wallet.css') }}">
+<div class="wallet-container">
+    <div class="border-line"></div>
+    <div class="message">
+        <h4>Aún no has guardado ninguna tarjeta</h4>
+        <p>Guarda tus detalles de pago de forma segura, mientras realizas un pedido durante el checkout.</p>
+    </div>
+    <div class="border-line"></div>
+</div>
+{% endblock %}

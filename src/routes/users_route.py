@@ -46,6 +46,18 @@ def my_addresses() -> str:
     return render_template("users/account/my_addresses.html", address_form=form)
 
 
+@users_blueprint.route("mis-suscripciones", methods=["GET"])
+def my_subcriptions() -> str:
+    """Return user logged subcriptions."""
+    return render_template("users/account/my_subcriptions.html")
+
+
+@users_blueprint.route("mi-billetera", methods=["GET"])
+def my_wallet() -> str:
+    """Return user logged wallet."""
+    return render_template("users/account/my_wallet.html")
+
+
 @users_blueprint.route("/update")
 def update() -> str:
     return "TODO: UPDATE USER"
