@@ -58,6 +58,12 @@ def my_wallet() -> str:
     return render_template("users/account/my_wallet.html")
 
 
+@users_blueprint.route("mis-pedidos", methods=["GET"])
+def my_orders() -> str:
+    """Return user logged orders."""
+    return render_template("users/account/my_orders.html")
+
+
 @users_blueprint.route("/update")
 def update() -> str:
     return "TODO: UPDATE USER"
