@@ -1,7 +1,10 @@
-from flask import Blueprint, request, render_template, redirect, session, flash, url_for, g
+"""Auth module for login and logout features"""
+from flask import (Blueprint, flash, g, redirect, render_template, request,
+                   session, url_for)
 from sqlalchemy import or_
-from werkzeug.security import check_password_hash
 
+# from werkzeug.security import check_password_hash
+from auth.jwt_settings import bcrypt
 from db_crud import user_crud
 from forms import UserCreateForm
 from models import User
@@ -30,7 +33,7 @@ def sign_in():
         error = None
         # TODO: verificar que no entre al regresar None
         if user := User.query.filter_by(email=user_data["email"]).first():
-            if not check_password_hash(user.password, user_data["password"]):
+            if not bcrypt.check_password_hash(user.password, user_data["password"]):
                 error = "Los datos son incorrectos."
 
             # Inicio de sesion
