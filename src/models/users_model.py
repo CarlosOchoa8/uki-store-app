@@ -26,12 +26,12 @@ class User(db.Model):
                 )
 
     def to_json(self):
-        return {
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "email": self.email,
-            "phone_number": self.phone_number
-        }
+        """Serialize User sqlalchemy object."""
+        json = {
+            column.name: getattr(self, column.name) for column in self.__table__.columns
+            }
+        json.pop("password")
+        return json
 
 """
 Tambien la migracion se puede realizar con
