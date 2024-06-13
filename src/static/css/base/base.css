@@ -121,3 +121,27 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
+
+.navbar {
+    background-color: #9e91ff;
+    height: 85px;
+}
+
+.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.navbar-nav .nav-item {
+    font: normal normal normal 16px/1.4em 'questrial', sans-serif;
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ccc;
+}
+

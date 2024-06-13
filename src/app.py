@@ -3,6 +3,7 @@ from typing import Any
 
 from flask import Flask, jsonify, render_template
 
+from auth.jwt_settings import bcrypt, jwt
 from config2 import config
 from database.db import db
 from routes import (auth_blueprint, main_blueprint, products_blueprint,
@@ -30,9 +31,12 @@ class PrefixMiddleware:
 
 app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix="/ukitukistore")
 
+# TODO ordenar todo esto
 app_config = config.AppConfig()
 app.config.from_object(app_config)
 db.init_app(app)
+jwt.init_app(app)
+bcrypt.init_app(app)
 
 app.register_blueprint(auth_blueprint, url_prefix="/app/v1/auth")
 app.register_blueprint(users_blueprint, url_prefix="/app/v1/users")

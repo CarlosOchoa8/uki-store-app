@@ -17,3 +17,4 @@ class AppConfig:
     MAIL_USERNAME = "fidelito6080@gmail.com"
     MAIL_DEFAULT_SENDER = "fidelito6080@gmail.com"
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+    JWT_SECRET_KEY = os.getenv("auth_secret_key")
