@@ -8,7 +8,7 @@ from flask import (
 )
 
 from db_crud import product_crud
-from models import Product  # con esto se migran a la base de datos
+from models import Product, ProductImage  # con esto se migran a la base de datos
 from auth.services import get_current_user
 from forms import ProductCreateForm
 
@@ -23,7 +23,7 @@ def create() -> Response | str:
     if request.method == "POST" and form.validate_on_submit():
         if not Product.query.filter_by(name=form_in["name"]).first():
             product_crud.create(obj_in=form_in)
-            return redirect(url_for("index"))  # Crear url para redireccionar a lista de items
+            return redirect(url_for("products.create"))  # Crear url para redireccionar a lista de items
         error = f"Error: el producto {request.form['name']} ya existe."
         flash(error)  # esto regresa una lista de mensajes
     return render_template('products/add_product.html', form=form)

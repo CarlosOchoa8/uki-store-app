@@ -23,7 +23,7 @@
                         <div class="form-group">
                             {{ form.category.label }}
                             {{ form.category(class="form-control", style="border: 0; border-bottom: 2px solid #CEC8FF; border-radius: 0;") }}
-                            {% for error in form.price.errors %}
+                            {% for error in form.category.errors %}
                             <span style="color: red"> {{ error }}</span>
                             {% endfor %}
                             <!-- <label for="price">precio del producto</label>
@@ -45,11 +45,12 @@
                             <span style="color: red"> {{ error }}</span>
                             {% endfor %}
                         </div>
+                        <div id="preview-container"></div>
                         <br>
                         <div class="text-center">
                             {{ form.hidden_tag() }}
-                            {{ form.submit(class="btn", type="submit", style="margin: 0 auto; width: 200px; border-radius: 1px; border-color: #9e91ff; background-color: #9e91ff; color: white") }}
-                            <!-- <input type="submit" class="btn btn-primary" value="Registrar producto"> -->
+                            {{ form.submit(class="btn", type="submit", style="margin: 0 auto; width: 200px; border-radius: 1px;
+                            border-color: #9e91ff; background-color: #9e91ff; color: white") }}
                         </div>
                     </form>
                 </div>
@@ -57,4 +58,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('main_picture').addEventListener('change', function (event) {
+        var previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = '';  // Clear the current previews
+
+        var files = event.target.files;
+        if (files) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                if (file.type.startsWith('image/')) {
+                    var reader = new FileReader();
+
+                    reader.onload = (function (file) {
+                        return function (e) {
+                            var imgElement = document.createElement('img');
+                            imgElement.src = e.target.result;
+                            imgElement.style.maxWidth = '150px';
+                            imgElement.style.margin = '10px';
+                            previewContainer.appendChild(imgElement);
+                        };
+                    })(file);
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}
