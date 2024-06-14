@@ -23,10 +23,11 @@ def save_files_to_static(category: str, upload_files: MultipleFileField) -> str:
                 file_type = mimetypes.guess_type(upload_file.filename)[0]
                 if file_type not in valid_image_types:
                     Exception("Exception")
-                if not os.path.exists(f"{static}{slugify.slugify(f'{category}')}"):
-                    os.mkdir(f"{static}{slugify.slugify(f'{category}')}")
+                if not os.path.exists(f"{static}products/{category}"):
+                    print("No existe")
+                    os.makedirs(f"{static}products/{category}")
                 directory_path = (
-                    f"{static}/{slugify.slugify(f'{category}')}/"
+                    f"{static}/products/{category}/"
                     )
                 content = upload_file.read()
                 image_extension = os.path.splitext(upload_file.filename)[1]

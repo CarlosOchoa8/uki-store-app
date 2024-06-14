@@ -18,8 +18,9 @@
             {% for product in products %}
             <div class="product_container">
                 <div class="img_container">
-                    <img class="product_img" src="{{ url_for('static', filename=product.category + '/' + product.main_picture) }}"
-                        alt="Descripción de la imagen">
+                    <img class="product_img" 
+                        src="{{ url_for('static', filename='products/' + product.category + '/' + product.main_picture) }}"
+                        alt="product {{ product.name }}" >
                 </div>
                 <div class="product_description">
                     <h4 class="name">{{ product.name }}</h4>
