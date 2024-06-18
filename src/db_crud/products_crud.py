@@ -9,9 +9,9 @@ from sqlalchemy.exc import SQLAlchemyError
 from database.crud_base import CRUDBase
 from database.db import db
 from forms import ProductCreateForm, ProductUpdateForm
-from models import Product, ProductImage
+from models import Product, ProductImage, Inventory
 from services.save_files import save_files_to_static
-
+from utils.inventory_constants import InventoryStock
 
 class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
     """Product CRUD class
@@ -21,6 +21,7 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
     def create(self, obj_in: list[ProductCreateForm] | dict[str, Any]) -> Product:
         """Create Product model object and insert its images in model ProductImage."""
         try:
+            inventory_stock = obj_in["product_stock"]
             obj_in_data = obj_in if isinstance(obj_in, dict) else obj_in.dict()
             product_files = save_files_to_static(
                 category=obj_in["category"],
@@ -39,6 +40,12 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
                 ]
             bulk_files_insert = insert(ProductImage).values(products_images)
 
+            inv_stock = Inventory(
+                product_id= db_obj.id,
+                product_stock= InventoryStock(inventory_stock)
+            )
+
+            db.session.add(inv_stock)
             db.session.execute(bulk_files_insert)
             db.session.commit()
             db.session.refresh(db_obj)

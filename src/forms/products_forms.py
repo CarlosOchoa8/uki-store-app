@@ -1,7 +1,11 @@
+import re
+
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed, MultipleFileField
-from wtforms import FloatField, MultipleFileField, StringField, SubmitField
-from wtforms.validators import DataRequired, Length
+from wtforms import FloatField, StringField, SubmitField
+from wtforms.validators import DataRequired, Length, Optional, ValidationError
+
+from utils.inventory_constants import InventoryStock
 
 
 class ProductCreateForm(FlaskForm):
@@ -16,12 +20,20 @@ class ProductCreateForm(FlaskForm):
         )
     price = FloatField("Precio", validators=[DataRequired()])
     # main_picture = FileField("Imagen principal", validators=[DataRequired()])
+    sku = StringField("SKU", validators=[Optional()])
+    product_stock = StringField("Inventario", validators=[])
     main_picture = MultipleFileField("Imagen principal",
                                      validators=[
                                          DataRequired(),
                                          FileAllowed(["jpg", "png", "jpeg"])
                                          ])
     submit = SubmitField("Añadir producto.")
+
+    def validate_product_stock(form, field):
+        if field.data not in [InventoryStock.UNAVAILABLE.value,
+                              InventoryStock.AVAILABLE.value] and not re.match(r"^\d+$", field.data):
+            raise ValidationError("""Debes proporcionar stock de inventario o cantidad válida
+                                  ('Disponible', 'Agotado' o Cantidad).""")
 
 
 class ProductUpdateForm(FlaskForm):
