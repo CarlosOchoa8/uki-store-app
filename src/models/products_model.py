@@ -6,8 +6,11 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     category = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
+    label = db.Column(db.String, nullable=True)
+    description = db.Column(db.Text, nullable=True)
     sku = db.Column(db.String, nullable=True)
     main_picture = db.Column(db.Text, nullable=False)
+    available = db.Column(db.Boolean, nullable=False)
 
     # def __init__(self, name, category, price, main_picture):
     #     self.name = name
