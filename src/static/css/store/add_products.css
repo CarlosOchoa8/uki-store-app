@@ -1,0 +1,155 @@
+body {
+    background-color: #ccc;
+}
+
+.sub-container{
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.form-wrapper {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #4D4DA0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4D4DA0;
+    font-weight: bold;
+}
+
+.form-label-inline {
+    display: inline-block;
+    margin-right: 10px;
+    color: #4D4DA0;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #CEC8FF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #9D91FF;
+    outline: none;
+}
+
+.form-checkbox {
+    margin-left: 10px;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.9em;
+}
+
+.form-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9D91FF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #4D4DA0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.form-wrapper {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #4D4DA0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4D4DA0;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-bottom: 2px solid #CEC8FF;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #9D91FF;
+    outline: none;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.9em;
+}
+
+.btn-submit {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 1px;
+    background-color: #9e91ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+}
+
+.btn-submit:hover {
+    background-color: #4D4DA0;
+}
+
+.text-center {
+    text-align: center;
+}
