@@ -78,6 +78,80 @@
             </form>
         </div>
     </div>
+    <div class="form-container">
+        <form class="form_" action="" enctype="multipart/form-data" method="post" novalidate>
+            <div class="product-information">
+                <div class="form-group2 name-field sub-cont1">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    {% for error in form.name.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group2 label-field">
+                    {{ form.label.label(class="form-label") }}
+                    {{ form.label(class="form-control") }}
+                    {% for error in form.label.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group2 description-field">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control") }}
+                    {% for error in form.description.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group2 category-field">
+                {{ form.category.label(class="form-label") }}
+                {{ form.category(class="form-control") }}
+                {% for error in form.category.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 price-field">
+                {{ form.price.label(class="form-label") }}
+                {{ form.price(class="form-control") }}
+                {% for error in form.price.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group2 stock-field">
+                {{ form.product_stock.label(class="form-label") }}
+                {{ form.product_stock(class="form-control") }}
+                {% for error in form.product_stock.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 sku-field">
+                {{ form.sku.label(class="form-label") }}
+                {{ form.sku(class="form-control") }}
+                {% for error in form.sku.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 image-field">
+                {{ form.main_picture.label(class="form-label") }}
+                {{ form.main_picture(class="form-control") }}
+                {% for error in form.main_picture.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 available-field">
+                {{ form.available.label(class="form-label") }}
+                {{ form.available(class="form-control") }}
+                {% for error in form.available.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 submit">
+                {{ form.hidden_tag() }}
+                {{ form.submit(class="btn btn-submit") }}
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     document.getElementById('main_picture').addEventListener('change', function (event) {
