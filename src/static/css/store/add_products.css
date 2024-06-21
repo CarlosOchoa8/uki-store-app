@@ -4,9 +4,9 @@ body {
 
 .sub-container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 2fr 1fr; */
     grid-template-rows: auto auto;
-    gap: 10px;
+    /* gap: 10px; */
     place-items: center;
     border: 22px solid black
 }
@@ -160,7 +160,7 @@ h1 {
 
 .form_{
     width: 50vw;
-    height: 50vh;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border: 3px solid hotpink;
@@ -171,7 +171,7 @@ h1 {
     display: inherit;
     grid-template-columns: 2fr 1fr;
     gap: 5px;
-    grid-area: 2 / 1 / span 1 / span 2;
+    grid-area: 1 / 1 / span 3 / span 2;
     border: 3px solid cornflowerblue;
 }
 
@@ -180,7 +180,7 @@ h1 {
 }
 
 .category-field{
-    grid-area: 2 / 3 / span 2 / span 1;
+    grid-area: 2 / 3 / span 3 / span 1;
 }
 
 .description-field{
@@ -193,11 +193,11 @@ h1 {
 }
 
 .price-field {
-    grid-area: 3 / 1 / span 1 / span 2;
+    grid-area: 4 / 1 / span 1 / span 2;
 }
 
 .stock-field {
-    grid-area: 4 / 1 / span 1 / span 2;
+    grid-area: 5 / 1 / span 1 / span 2;
 }
 
 .sub-cont1{
@@ -210,10 +210,24 @@ h1 {
 
 
 .image-field{
-    grid-area: 1 / 1 / span 1 / span 2;
+    grid-area: 6 / 1 / span 1 / span 2;
 }
 
 .available-field{
     grid-area: 1 / 3 / span 1 / span 1;
 }
 
+#preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 5px;
+}
+
+#preview-container img {
+    max-width: 100%;
+    height: 200px;
+    place-items: center;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+}
