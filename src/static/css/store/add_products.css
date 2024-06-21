@@ -7,6 +7,8 @@ body {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     gap: 10px;
+    place-items: center;
+    border: 22px solid black
 }
 
 .container {
@@ -168,8 +170,36 @@ h1 {
 .product-information{
     display: inherit;
     grid-template-columns: 2fr 1fr;
+    gap: 5px;
+    grid-area: 2 / 1 / span 1 / span 2;
     border: 3px solid cornflowerblue;
 }
+
+.name-field{
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.category-field{
+    grid-area: 2 / 3 / span 2 / span 1;
+}
+
+.description-field{
+    grid-area: 2 / 1 / span 1 / span 2;
+
+}
+
+.label-field{
+    grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.price-field {
+    grid-area: 3 / 1 / span 1 / span 2;
+}
+
+.stock-field {
+    grid-area: 4 / 1 / span 1 / span 2;
+}
+
 .sub-cont1{
     border: 3px solid black;
 }
