@@ -1,0 +1,265 @@
+/* Resetting some default browser styles */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+table,
+th,
+td,
+input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Questrial', sans-serif;
+    display: grid;
+    grid-template-areas:
+        "navbar navbar"
+        "sidebar content";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+    background-color: #bebebe;
+}
+
+/* Navbar Styles */
+.navbar {
+    grid-area: navbar;
+    background-color: rgba(158, 145, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar span {
+    font-size: 24px;
+    color: white;
+}
+
+.navbar span a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    grid-area: sidebar;
+    background-color: rgba(123, 106, 255, 0.85);
+    padding-top: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar a,
+.dropdown-btn {
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover,
+.dropdown-btn:hover {
+    background-color: #4D4DA0;
+    color: #ecf0f1;
+}
+
+.sidebar a ion-icon,
+.dropdown-btn ion-icon {
+    margin-right: 15px;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(158, 145, 255, 0.85);
+    padding-left: 30px;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.dropdown-content a:hover {
+    background-color: #b1a7ff;
+    color: #000;
+}
+
+.show {
+    max-height: 200px;
+    /* Adjust this value according to your content */
+}
+
+/* Content Styles */
+.content {
+    grid-area: content;
+    padding: 1 20px 20px 20px;
+    overflow-y: auto;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #4D4DA0;
+    margin-bottom: 15px;
+}
+
+.footer_container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(158, 145, 255, 0.85);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+
+.cardBox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cardBox .card {
+    width: calc(25% - 20px);
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details .recentOrders,
+.details .recentCustomers {
+    width: 48%;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardHeader h2 {
+    color: #4D4DA0;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4D4DA0;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: #4D4DA0;
+    color: white;
+}
+
+table thead tr th {
+    padding: 10px;
+}
+
+table tbody tr td {
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f9;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.delivered {
+    background-color: green;
+}
+
+.pending {
+    background-color: orange;
+}
+
+.return {
+    background-color: red;
+}
+
+.inProgress {
+    background-color: blue;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        height: 100%;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(250px);
+    }
+
+    body {
+        grid-template-areas:
+            "navbar navbar"
+            "content content";
+        grid-template-rows: 60px 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .footer_container {
+        width: 100%;
+        margin-left: 0;
+    }
+}

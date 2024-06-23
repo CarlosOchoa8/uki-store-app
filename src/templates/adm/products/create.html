@@ -1,0 +1,199 @@
+{% extends 'adm_base.html' %}
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/store/add_products.css') }}" rel="stylesheet" type="text/css">
+<!-- <h1>Registrar producto</h1> -->
+    <div id="sticky-footer" class="sticky-footer">
+        <h1>Agregar producto nuevo</h1>
+    </div>
+<div class="sub-container"> 
+    <!-- <div class="container">
+        <div class="form-wrapper">
+            <form action="" method="post" enctype="multipart/form-data" novalidate>
+                <div class="form-group">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    {% for error in form.name.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.category.label(class="form-label") }}
+                    {{ form.category(class="form-control") }}
+                    {% for error in form.category.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.price.label(class="form-label") }}
+                    {{ form.price(class="form-control") }}
+                    {% for error in form.price.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.label.label(class="form-label") }}
+                    {{ form.label(class="form-control") }}
+                    {% for error in form.label.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control") }}
+                    {% for error in form.description.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.product_stock.label(class="form-label") }}
+                    {{ form.product_stock(class="form-control") }}
+                    {% for error in form.product_stock.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.sku.label(class="form-label") }}
+                    {{ form.sku(class="form-control") }}
+                    {% for error in form.sku.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.main_picture.label(class="form-label") }}
+                    {{ form.main_picture(class="form-control") }}
+                    {% for error in form.main_picture.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.available.label(class="form-label") }}
+                    {{ form.available(class="form-control") }}
+                    {% for error in form.available.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div id="preview-container"></div>
+                <div class="form-group text-center">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(class="btn btn-submit") }}
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <div class="form-container">
+        <form class="form_" action="" enctype="multipart/form-data" method="post" novalidate>
+            <div class="product-information">
+                <div class="form-group2 name-field sub-cont1">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    {% for error in form.name.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group2 label-field">
+                    {{ form.label.label(class="form-label") }}
+                    {{ form.label(class="form-control") }}
+                    {% for error in form.label.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group2 description-field">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control") }}
+                    {% for error in form.description.errors %}
+                    <span class="error-text">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group2 category-field">
+                {{ form.category.label(class="form-label") }}
+                {{ form.category(class="form-control") }}
+                {% for error in form.category.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 price-field">
+                {{ form.price.label(class="form-label") }}
+                {{ form.price(class="form-control") }}
+                {% for error in form.price.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group2 stock-field">
+                {{ form.product_stock.label(class="form-label") }}
+                {{ form.product_stock(class="form-control") }}
+                {% for error in form.product_stock.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 sku-field">
+                {{ form.sku.label(class="form-label") }}
+                {{ form.sku(class="form-control") }}
+                {% for error in form.sku.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 image-field">
+                {{ form.main_picture.label(class="form-label") }}
+                {{ form.main_picture(class="form-control") }}
+                {% for error in form.main_picture.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            <div id="preview-container"></div>
+            </div>
+            <div class="form-group2 available-field">
+                {{ form.available.label(class="form-label") }}
+                {{ form.available(class="form-control") }}
+                {% for error in form.available.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group2 submit-field">
+                {{ form.hidden_tag() }}
+                {{ form.submit(class="btn btn-submit") }}
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById('main_picture').addEventListener('change', function (event) {
+        var previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = '';  // Clear the current previews
+
+        var files = event.target.files;
+        if (files) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                if (file.type.startsWith('image/')) {
+                    var reader = new FileReader();
+
+                    reader.onload = (function (file) {
+                        return function (e) {
+                            var imgElement = document.createElement('img');
+                            imgElement.src = e.target.result;
+                            imgElement.style.maxWidth = '150px';
+                            imgElement.style.margin = '10px';
+                            previewContainer.appendChild(imgElement);
+                        };
+                    })(file);
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    });
+
+    window.addEventListener('scroll', function () {
+            const stickyFooter = document.getElementById('sticky-footer');
+            if (window.scrollY > 0) {
+                stickyFooter.classList.add('small');
+            } else {
+                stickyFooter.classList.remove('small');
+            }
+        });
+</script>
+
+{% endblock %}

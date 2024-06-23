@@ -23,7 +23,8 @@ class ProductCreateForm(FlaskForm):
     description = TextAreaField("Descripción")
     # main_picture = FileField("Imagen principal", validators=[DataRequired()])
     sku = StringField("SKU", validators=[Optional()])
-    product_stock = StringField("Inventario", validators=[])
+    product_stock = StringField("Inventario", validators=[DataRequired(message="Stock requerido.")],
+                                render_kw={"placeholder": "'Disponible', 'Agotado' o cantidad del producto."},)
     main_picture = MultipleFileField("Imagen principal",
                                      validators=[
                                          DataRequired(message="Foto referencial de producto."),

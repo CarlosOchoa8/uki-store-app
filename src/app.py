@@ -6,8 +6,8 @@ from flask import Flask, jsonify, render_template
 from auth.jwt_settings import bcrypt, jwt
 from config2 import config
 from database.db import db
-from routes import (auth_blueprint, main_blueprint, products_blueprint,
-                    users_blueprint)
+from routes import (auth_blueprint, main_blueprint, panel_route,
+                    products_blueprint, users_blueprint)
 
 app = Flask(__name__)
 @app.errorhandler(404)
@@ -42,6 +42,7 @@ app.register_blueprint(auth_blueprint, url_prefix="/app/v1/auth")
 app.register_blueprint(users_blueprint, url_prefix="/app/v1/users")
 app.register_blueprint(products_blueprint, url_prefix="/app/v1/products")
 app.register_blueprint(main_blueprint, url_prefix="/ukitukistore")
+app.register_blueprint(panel_route, url_prefix="/panel")
 
 with app.app_context():
     # db.drop_all()
