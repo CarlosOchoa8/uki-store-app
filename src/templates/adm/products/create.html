@@ -157,6 +157,14 @@
         </form>
     </div>
 </div>
+<!-- Popup Modal para mensajes flash -->
+<div id="flashModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="flash-message"></p>
+    </div>
+</div>
+
 <script>
     document.getElementById('main_picture').addEventListener('change', function (event) {
         var previewContainer = document.getElementById('preview-container');
@@ -194,6 +202,27 @@
                 stickyFooter.classList.remove('small');
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const messages = {{ get_flashed_messages() | tojson
+        }};
+        if (messages.length > 0) {
+            const modal = document.getElementById('flashModal');
+            const messageElement = document.getElementById('flash-message');
+            messageElement.innerHTML = messages.map(msg => `<p>${msg}</p>`).join('');
+            modal.style.display = "block";
+        }
+
+        document.querySelector(".close-button").onclick = function () {
+            document.getElementById('flashModal').style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('flashModal')) {
+                document.getElementById('flashModal').style.display = "none";
+            }
+        }
+    });
 </script>
 
 {% endblock %}
