@@ -2,7 +2,10 @@
 
 {% block content %}
 <link href="{{ url_for('static', filename='css/store/add_products.css') }}" rel="stylesheet" type="text/css">
-<h1>Registrar producto</h1>
+<!-- <h1>Registrar producto</h1> -->
+    <div id="sticky-footer" class="sticky-footer">
+        <h1>Agregar producto nuevo</h1>
+    </div>
 <div class="sub-container"> 
     <!-- <div class="container">
         <div class="form-wrapper">
@@ -182,6 +185,15 @@
             }
         }
     });
+
+    window.addEventListener('scroll', function () {
+            const stickyFooter = document.getElementById('sticky-footer');
+            if (window.scrollY > 0) {
+                stickyFooter.classList.add('small');
+            } else {
+                stickyFooter.classList.remove('small');
+            }
+        });
 </script>
 
 {% endblock %}

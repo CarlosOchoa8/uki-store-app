@@ -1,5 +1,5 @@
 body {
-    background-color: #ccc;
+    background-color: #F0F4F7;
 }
 
 .sub-container {
@@ -8,7 +8,6 @@ body {
     grid-template-rows: auto auto;
     /* gap: 10px; */
     place-items: center;
-    border: 22px solid black
 }
 
 .container {
@@ -163,16 +162,14 @@ h1 {
     min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border: 3px solid hotpink;
-    gap: 10px;
+    gap: 4%;
 }
 
 .product-information{
     display: inherit;
     grid-template-columns: 2fr 1fr;
-    gap: 5px;
+    gap: 15px;
     grid-area: 1 / 1 / span 3 / span 2;
-    border: 3px solid cornflowerblue;
 }
 
 .name-field{
@@ -200,12 +197,11 @@ h1 {
     grid-area: 5 / 1 / span 1 / span 2;
 }
 
-.sub-cont1{
-    border: 3px solid black;
-}
-
 .form-group2{
-    border: 2px solid cadetblue;
+    /* border: 1px solid cadetblue; */
+    background-color: #FFFFFF;
+    background-image: linear-gradient(to top bottom, #dbdbdb, #e0e0e0);
+    border-radius: 5px;
 }
 
 
@@ -230,4 +226,19 @@ h1 {
     object-fit: cover;
     display: block;
     border-radius: 5px;
+}
+
+.sticky-footer {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(to right, #9CC2CA, #E4DED6, #AEACA7);
+    padding: 20px 0;
+    text-align: center;
+    transition: padding 0.3s, background-color 0.3s;
+    z-index: 1000;
+}
+
+.sticky-footer.small {
+    padding: 5px 0;
 }
