@@ -2,16 +2,18 @@
 body {
     font-family: Arial, sans-serif;
     background-color: inherit;
-    /* background-color: #ccc; */
+    background-color: #ECEFF3;
     margin: 0;
     padding: 0;
 }
 
 .inventory-container {
     width: 80%;
+    position: relative;
+    top: 20px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ECEFF3;
+    background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -155,7 +157,7 @@ body {
 .search-bar {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 .inventory-table {
