@@ -5,19 +5,19 @@
 
 <div class="sub-container">
     <div class="add-product-container">
-        <h1>Agregar Producto</h1>
+        <h1>{{ product.name }}</h1>
         <form id="add-product-form" method="post" action="#" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="main_picture">Imagen Principal</label>
+                <div id="preview-container">
+                    <img src="{{ url_for('static', filename='products/' + product.category + '/' + product.main_picture) }}"
+                        alt="Imagen actual" class="img-preview">
+                </div>
+                {{ form.main_picture(class="form-control") }}
+            </div>
             <div class="form-group">
                 <label for="name">Nombre del Producto</label>
                 {{ form.name(class="form-control", placeholder=product.name) }}
-            </div>
-            <div class="form-group">
-                <label for="category">Categoría</label>
-                {{ form.category(class="form-control", placeholder=product.category) }}
-            </div>
-            <div class="form-group">
-                <label for="price">Precio</label>
-                {{ form.price(class="form-control", placeholder=product.price) }}
             </div>
             <div class="form-group">
                 <label for="label">Etiqueta</label>
@@ -28,6 +28,14 @@
                 {{ form.description(class="form-control", placeholder=product.description) }}
             </div>
             <div class="form-group">
+                <label for="category">Categoría</label>
+                {{ form.category(class="form-control", placeholder=product.category) }}
+            </div>
+            <div class="form-group">
+                <label for="price">Precio</label>
+                {{ form.price(class="form-control", placeholder=product.price) }}
+            </div>
+            <div class="form-group">
                 <label for="sku">SKU</label>
                 {{ form.sku(class="form-control", placeholder=product.sku) }}
             </div>
@@ -36,13 +44,8 @@
                 {{ form.product_stock(class="form-control", placeholder=product.inventory[0].product_stock.value) }}
             </div>
             <div class="form-group">
-                <label for="main_picture">Imagen Principal</label>
-                <div id="preview-container"><img src="{{ url_for('static', filename='products/' + product.category + '/' + product.main_picture)}}"></div>
-                {{ form.main_picture(class="form-control", placeholder=product.main_picture) }}
-            </div>
-            <div class="form-group">
                 <label for="available">Mostrar producto en tienda</label>
-                {{ form.available(class="form-control", placeholder="a") }}
+                {{ form.available(class="form-control") }}
             </div>
             <div class="form-group">
                 {{ form.submit(class="submit-button") }}
@@ -52,32 +55,32 @@
 </div>
 
 <script>
-        document.getElementById('main_picture').addEventListener('change', function (event) {
-                var previewContainer = document.getElementById('preview-container');
-                previewContainer.innerHTML = '';  // Clear the current previews
+    document.getElementById('main_picture').addEventListener('change', function (event) {
+        var previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = '';  // Clear the current previews
 
-                var files = event.target.files;
-                if (files) {
-                    for (var i = 0; i < files.length; i++) {
-                        var file = files[i];
+        var files = event.target.files;
+        if (files) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
 
-                        if (file.type.startsWith('image/')) {
-                            var reader = new FileReader();
+                if (file.type.startsWith('image/')) {
+                    var reader = new FileReader();
 
-                            reader.onload = (function (file) {
-                                return function (e) {
-                                    var imgElement = document.createElement('img');
-                                    imgElement.src = e.target.result;
-                                    imgElement.style.maxWidth = '150px';
-                                    imgElement.style.margin = '10px';
-                                    previewContainer.appendChild(imgElement);
-                                };
-                            })(file);
+                    reader.onload = (function (file) {
+                        return function (e) {
+                            var imgElement = document.createElement('img');
+                            imgElement.src = e.target.result;
+                            imgElement.style.maxWidth = '150px';
+                            imgElement.style.margin = '10px';
+                            previewContainer.appendChild(imgElement);
+                        };
+                    })(file);
 
-                            reader.readAsDataURL(file);
-                        }
-                    }
+                    reader.readAsDataURL(file);
                 }
-            });
+            }
+        }
+    });
 </script>
 {% endblock %}
