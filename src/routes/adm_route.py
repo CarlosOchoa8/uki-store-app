@@ -1,7 +1,7 @@
 from flask import (Blueprint, Response, redirect, render_template, request,
                    url_for, flash)
 from db_crud import product_crud, inventory_crud
-from forms import ProductCreateForm
+from forms import ProductCreateForm, ProductUpdateForm
 from models import Product, Inventory
 
 panel_blueprint = Blueprint("panel", __name__)
@@ -34,6 +34,15 @@ def inventory():
     """Inventory of products."""
     prod_inventory = inventory_crud.get_multi()
     return render_template("adm/products/inventory.html", inventory=prod_inventory)
+
+
+# TODO validar que el usuario sea admin y este logeado y utilizar path param
+@panel_blueprint.route("/product", methods=["GET", "POST"])
+def update_product():
+    """Update a product."""
+    product_form = ProductUpdateForm()
+    product = product_crud.get(id=1)
+    return render_template("adm/products/update.html", form=product_form, product=product)
 
 
 panel_route = panel_blueprint

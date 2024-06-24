@@ -40,6 +40,6 @@ class ProductCreateForm(FlaskForm):
                                   ('Disponible', 'Agotado' o Cantidad).""")
 
 
-class ProductUpdateForm(FlaskForm):
+class ProductUpdateForm(ProductCreateForm):
     """pass """
     pass
