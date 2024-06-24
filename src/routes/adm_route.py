@@ -1,8 +1,8 @@
 from flask import (Blueprint, Response, redirect, render_template, request,
                    url_for, flash)
-from db_crud import product_crud
+from db_crud import product_crud, inventory_crud
 from forms import ProductCreateForm
-from models import Product
+from models import Product, Inventory
 
 panel_blueprint = Blueprint("panel", __name__)
 
@@ -16,7 +16,6 @@ def panel() -> Response | str:
 @panel_blueprint.route("/product/create", methods=["GET", "POST"])
 def create_product():
     """Add new product at store."""
-    print("Entro")
     form = ProductCreateForm()
     form_in = form.data
     if request.method == "POST" and form.validate_on_submit():
@@ -27,6 +26,14 @@ def create_product():
         error = f"Error: el producto {request.form['name']} ya existe."
         flash(error)  # esto regresa una lista de mensajes
     return render_template("adm/products/create.html", form=form)
+
+
+# TODO validar que el usuario sea admin y este logeado
+@panel_blueprint.route("/inventory", methods=["GET", "POST"])
+def inventory():
+    """Inventory of products."""
+    prod_inventory = inventory_crud.get_multi()
+    return render_template("adm/products/inventory.html", inventory=prod_inventory)
 
 
 panel_route = panel_blueprint
