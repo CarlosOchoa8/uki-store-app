@@ -36,6 +36,7 @@ class CRUDBase(Generic[ModelType, CreateFormType, UpdateFormType]):
         """Update a Model object"""
         try:
             obj_in_data = obj_in if isinstance(obj_in, dict) else obj_in.dict(exclude_none=True)
+            obj_in_data = {field: value for field, value in obj_in_data.items() if value not in (None, '', [])}
             for field in obj_in_data:
                 if hasattr(db_obj, field):
                     setattr(db_obj, field, obj_in_data[field])

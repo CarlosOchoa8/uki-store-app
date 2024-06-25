@@ -6,7 +6,7 @@
 <div class="sub-container">
     <div class="add-product-container">
         <h1>{{ product.name }}</h1>
-        <form id="add-product-form" method="post" action="#" enctype="multipart/form-data">
+        <form id="add-product-form" class="form_" action="{{ url_for('panel.update_product', product_id=product.id) }}" enctype="multipart/form-data" method="post" novalidate>
             <div class="form-group">
                 <label for="main_picture">Imagen Principal</label>
                 <div id="preview-container">
@@ -14,43 +14,78 @@
                         alt="Imagen actual" class="img-preview">
                 </div>
                 {{ form.main_picture(class="form-control") }}
+                {% for error in form.main_picture.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="name">Nombre del Producto</label>
                 {{ form.name(class="form-control", placeholder=product.name) }}
+                {% for error in form.name.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="label">Etiqueta</label>
                 {{ form.label(class="form-control", placeholder=product.label) }}
+                {% for error in form.label.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
                 {{ form.description(class="form-control", placeholder=product.description) }}
+                {% for error in form.description.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="category">Categoría</label>
                 {{ form.category(class="form-control", placeholder=product.category) }}
+                {% for error in form.category.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="price">Precio</label>
                 {{ form.price(class="form-control", placeholder=product.price) }}
+                {% for error in form.price.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="sku">SKU</label>
                 {{ form.sku(class="form-control", placeholder=product.sku) }}
+                {% for error in form.sku.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="product_stock">Inventario</label>
                 {{ form.product_stock(class="form-control", placeholder=product.inventory[0].product_stock.value) }}
+                {% for error in form.product_stock.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
                 <label for="available">Mostrar producto en tienda</label>
                 {{ form.available(class="form-control") }}
+                {% for error in form.available.errors %}
+                <span class="error-text">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-group">
-                {{ form.submit(class="submit-button") }}
+                {{ form.hidden_tag() }}
+                {{ form.submit(class="submit-button btn btn-submit") }}
             </div>
         </form>
+    </div>
+</div>
+<!-- Popup Modal para mensajes flash -->
+<div id="flashModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="flash-message"></p>
     </div>
 </div>
 
@@ -79,6 +114,27 @@
 
                     reader.readAsDataURL(file);
                 }
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+            const messages = {{ get_flashed_messages() | tojson
+        }};
+        if (messages.length > 0) {
+            const modal = document.getElementById('flashModal');
+            const messageElement = document.getElementById('flash-message');
+            messageElement.innerHTML = messages.map(msg => `<p>${msg}</p>`).join('');
+            modal.style.display = "block";
+        }
+
+        document.querySelector(".close-button").onclick = function () {
+            document.getElementById('flashModal').style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('flashModal')) {
+                document.getElementById('flashModal').style.display = "none";
             }
         }
     });

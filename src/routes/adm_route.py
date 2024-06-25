@@ -36,12 +36,21 @@ def inventory():
     return render_template("adm/products/inventory.html", inventory=prod_inventory)
 
 
-# TODO validar que el usuario sea admin y este logeado y utilizar path param
-@panel_blueprint.route("/product", methods=["GET", "POST"])
-def update_product():
+# TODO validar que el usuario sea admin y este logeado
+@panel_blueprint.route("/product/<int:product_id>", methods=["GET", "POST"])
+def update_product(product_id: int):
     """Update a product."""
     product_form = ProductUpdateForm()
-    product = product_crud.get(id=1)
+    product = product_crud.get(id=product_id)
+
+    if request.method == "POST" and product_form.validate_on_submit():
+        product_in = product_form.data
+        if product_crud.get_by_name(name=product_in["name"]) or product_crud.get_by_sku(sku=product_in["sku"]):
+            error = "Error: el nombre o sku ya se encuentra registrado."
+            flash(error)
+        product_crud.update(obj_in=product_in, db_obj=product)
+        redirect(url_for('panel.update_product', product_id=product.id), 200)
+
     return render_template("adm/products/update.html", form=product_form, product=product)
 
 

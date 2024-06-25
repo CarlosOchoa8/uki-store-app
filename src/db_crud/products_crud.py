@@ -70,4 +70,13 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
                 self.model.query.with_entities(self.model.category).distinct().all()
                 ]
 
+    def get_by_name(self, name: str) -> Product:
+        """Get Product object by his name."""
+        return self.model.query.filter(self.model.name == name).first()
+
+    def get_by_sku(self, sku: str | int) -> Product:
+        """Get Product object by his name."""
+        return self.model.query.filter(self.model.sku == sku).first()
+
+
 product_crud = CRUDProduct(Product)

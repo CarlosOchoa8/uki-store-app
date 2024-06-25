@@ -40,7 +40,7 @@
                         <div class="options-container">
                             <button class="options-button">•••</button>
                             <div class="options-menu">
-                                <a href="{{ url_for('panel.update_product') }}">Actualizar</a>
+                                <a href="{{ url_for('panel.update_product', product_id=product.product.id) }}">Actualizar</a>
                                 <a href="#">Permitir en tienda</a>
                             </div>
                         </div>
