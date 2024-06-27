@@ -1,5 +1,5 @@
 from database.db import db
-
+from sqlalchemy.orm import relationship
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +12,7 @@ class Product(db.Model):
     main_picture = db.Column(db.Text, nullable=False)
     available = db.Column(db.Boolean, nullable=False)
 
+    inventory = relationship("Inventory", back_populates="product")
     # def __init__(self, name, category, price, main_picture):
     #     self.name = name
     #     self.category = category

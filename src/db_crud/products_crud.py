@@ -5,7 +5,7 @@ from typing import Any
 
 from sqlalchemy import insert
 from sqlalchemy.exc import SQLAlchemyError
-
+from sqlalchemy.orm import joinedload
 from database.crud_base import CRUDBase
 from database.db import db
 from forms import ProductCreateForm, ProductUpdateForm
@@ -54,6 +54,9 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
             db.session.rollback()
             raise SQLAlchemyError(f"Error: {str(e)}") from e
 
+    def get(self, id: int) -> Product:
+        return self.model.query.filter(self.model.id == id).options(joinedload(self.model.inventory)).first()
+
     def filter_by_category(self, param: str, page: int | None = 1, per_page: int = 18) -> list[Product]:
         """Return items by specific category"""
         return self.model.query.filter(
@@ -66,5 +69,14 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
         return [category[0] for category in
                 self.model.query.with_entities(self.model.category).distinct().all()
                 ]
+
+    def get_by_name(self, name: str) -> Product:
+        """Get Product object by his name."""
+        return self.model.query.filter(self.model.name == name).first()
+
+    def get_by_sku(self, sku: str | int) -> Product:
+        """Get Product object by his name."""
+        return self.model.query.filter(self.model.sku == sku).first()
+
 
 product_crud = CRUDProduct(Product)
