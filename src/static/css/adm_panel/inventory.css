@@ -175,3 +175,14 @@ body {
 .inventory-table th {
     background-color: #D6E6FE;
 }
+
+.inventory-item:hover {
+    background-color: #E7F0FF;
+    /* Color de fondo al pasar el mouse */
+    cursor: pointer;
+    /* Cambia el cursor a puntero */
+}
+
+.inventory-item td {
+    cursor: pointer;
+}

@@ -28,10 +28,12 @@
             </thead>
             <tbody>
                 {% for product in inventory %}
-                <tr class="inventory-item" data-status="{{ 'available' if product.product_stock else 'Agotado' }}">
+                <tr class="inventory-item" data-status="{{ 'available' if product.product_stock else 'out_of_stock' }}"
+                    data-url="{{ url_for('panel.update_product', product_id=product.product.id) }}">
                     <td>
-                        <img class="prod_img" src="{{ url_for('static', filename='products/' + product.product.category + '/' + product.product.main_picture) }}"
-                        alt="{{ product.product.name }}" width="70">
+                        <img class="prod_img"
+                            src="{{ url_for('static', filename='products/' + product.product.category + '/' + product.product.main_picture) }}"
+                            alt="{{ product.product.name }}" width="70">
                     </td>
                     <td>{{ product.product.name }}</td>
                     <td>{{ product.product.sku }}</td>
@@ -57,9 +59,20 @@
     document.addEventListener('DOMContentLoaded', function () {
         const statusFilter = document.getElementById('status-filter');
         const searchBar = document.getElementById('search-bar');
+        const inventoryItems = document.querySelectorAll('.inventory-item');
 
         statusFilter.addEventListener('change', filterInventory);
         searchBar.addEventListener('input', filterInventory);
+
+        inventoryItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                // Verifica que el clic no sea en el botón de opciones o dentro del menú de opciones
+                if (!event.target.classList.contains('options-button') && !event.target.closest('.options-menu')) {
+                    const url = item.getAttribute('data-url');
+                    window.location.href = url;
+                }
+            });
+        });
 
         function filterInventory() {
             const status = statusFilter.value;
@@ -67,7 +80,7 @@
             const items = document.querySelectorAll('.inventory-item');
 
             items.forEach(item => {
-                const itemName = item.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                const itemName = item.querySelector('td:nth-child(2)').textContent.toLowerCase();
                 const itemStatus = item.dataset.status;
 
                 if ((status === 'all' || status === itemStatus) && itemName.includes(searchQuery)) {
@@ -77,9 +90,8 @@
                 }
             });
         }
-    });
 
-    const buttons = document.querySelectorAll('.options-button');
+        const buttons = document.querySelectorAll('.options-button');
         buttons.forEach(button => {
             button.addEventListener('click', function (event) {
                 event.stopPropagation();
@@ -94,5 +106,6 @@
                 menu.classList.remove('show');
             });
         });
+    });
 </script>
 {% endblock %}
