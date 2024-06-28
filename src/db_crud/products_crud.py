@@ -78,5 +78,11 @@ class CRUDProduct(CRUDBase[Product, ProductCreateForm, ProductUpdateForm]):
         """Get Product object by his name."""
         return self.model.query.filter(self.model.sku == sku).first()
 
+    def get_products_data(self, page: int | None = 1, per_page: int | None = 15) -> list[Product]:
+        """Return all products paginated and load relationship."""
+        return self.model.query.filter().options(
+            joinedload(self.model.inventory)
+            ).paginate(page=page, per_page=per_page, error_out=False)
+
 
 product_crud = CRUDProduct(Product)

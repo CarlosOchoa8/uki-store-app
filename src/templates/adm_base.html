@@ -31,7 +31,8 @@
         <span>Catálogo</span>
       </a>
       <div class="dropdown-content">
-        <a href="{{ url_for('panel.create_product')}}">Productos</a>
+        <a href="{{ url_for('panel.create_product')}}">Crear producto</a>
+        <a href="{{ url_for('panel.get_products' ) }}">Productos</a>
         <a href="{{ url_for('panel.inventory' ) }}">Inventario</a>
       </div>
     </div>

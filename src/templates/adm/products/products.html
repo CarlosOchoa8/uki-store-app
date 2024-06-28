@@ -1,0 +1,112 @@
+{% extends 'adm_base.html' %}
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/adm_panel/products/products.css') }}" rel="stylesheet" type="text/css">
+
+<div class="sub-container">
+    <div class="inventory-container">
+        <div class="inventory-header">
+            <h1>Productos</h1>
+            <div class="filter-container">
+                <select id="status-filter" class="filter-select">
+                    <option value="all">Todos</option>
+                    <option value="available">Disponible</option>
+                    <option value="out_of_stock">Agotado</option>
+                </select>
+                <input type="text" id="search-bar" class="search-bar" placeholder="Buscar por nombre...">
+            </div>
+        </div>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>SKU</th>
+                    <th>Precio</th>
+                    <th>Inventario</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr class="inventory-item" data-status="">
+                    <td>
+                        <img class="prod_img"
+                            src="{{ url_for('static', filename='products/' + product.category + '/' + product.main_picture) }}"
+                            alt="{{ product.name }}" width="70">
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.sku }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.inventory[0].product_stock.value }}</td>
+                    <td>
+                        <div class="options-container">
+                            <button class="options-button">•••</button>
+                            <div class="options-menu">
+                                <a href="{{ url_for('panel.update_product', product_id=product.id) }}">Actualizar</a>
+                                <a href="#">Permitir en tienda</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // inventory.js
+    document.addEventListener('DOMContentLoaded', function () {
+        const statusFilter = document.getElementById('status-filter');
+        const searchBar = document.getElementById('search-bar');
+        const inventoryItems = document.querySelectorAll('.inventory-item');
+
+        statusFilter.addEventListener('change', filterInventory);
+        searchBar.addEventListener('input', filterInventory);
+
+        inventoryItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                // Verifica que el clic no sea en el botón de opciones o dentro del menú de opciones
+                if (!event.target.classList.contains('options-button') && !event.target.closest('.options-menu')) {
+                    const url = item.getAttribute('data-url');
+                    window.location.href = url;
+                }
+            });
+        });
+
+        function filterInventory() {
+            const status = statusFilter.value;
+            const searchQuery = searchBar.value.toLowerCase();
+            const items = document.querySelectorAll('.inventory-item');
+
+            items.forEach(item => {
+                const itemName = item.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const itemStatus = item.dataset.status;
+
+                if ((status === 'all' || status === itemStatus) && itemName.includes(searchQuery)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        const buttons = document.querySelectorAll('.options-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+                const menu = button.nextElementSibling;
+                menu.classList.toggle('show');
+            });
+        });
+
+        document.addEventListener('click', function () {
+            const menus = document.querySelectorAll('.options-menu');
+            menus.forEach(menu => {
+                menu.classList.remove('show');
+            });
+        });
+    });
+</script>
+{% endblock %}

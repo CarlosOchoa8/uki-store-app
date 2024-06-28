@@ -37,6 +37,14 @@ def inventory():
 
 
 # TODO validar que el usuario sea admin y este logeado
+@panel_blueprint.route("/productos", methods=["GET", "POST"])
+def get_products():
+    """Get all products."""
+    products = product_crud.get_products_data()
+    return render_template("adm/products/products.html", products=products)
+
+
+# TODO validar que el usuario sea admin y este logeado
 @panel_blueprint.route("/product/<int:product_id>", methods=["GET", "POST"])
 def update_product(product_id: int):
     """Update a product."""
