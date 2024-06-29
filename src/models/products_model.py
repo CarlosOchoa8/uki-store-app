@@ -1,7 +1,10 @@
-from database.db import db
 from sqlalchemy.orm import relationship
 
+from database.db import db
+
+
 class Product(db.Model):
+    """ Class for Product db presentation. """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     category = db.Column(db.String(100), nullable=False)
@@ -24,3 +27,8 @@ class Product(db.Model):
                 f"<{self.name}>"
                 f"<{self.category}>"
                 f"<{self.price}>")
+
+    @property
+    def formatted_price(self):
+        """ Return the formatted price of the product. """
+        return f"{self.price:,.2f} COP."

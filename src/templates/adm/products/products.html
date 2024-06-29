@@ -29,15 +29,16 @@
             </thead>
             <tbody>
                 {% for product in products %}
-                <tr class="inventory-item" data-status="">
-                    <td>
+                <tr class="inventory-item" data-status="{{ 'available' if product else 'out_of_stock' }}"
+                    data-url="{{ url_for('panel.update_product', product_id=product.id) }}">
+                    <td class="image-container">
                         <img class="prod_img"
                             src="{{ url_for('static', filename='products/' + product.category + '/' + product.main_picture) }}"
                             alt="{{ product.name }}" width="70">
-                    </td>
+                    </td>{{ product.id }}
                     <td>{{ product.name }}</td>
                     <td>{{ product.sku }}</td>
-                    <td>{{ product.price }}</td>
+                    <td>{{ product.formatted_price }}</td>
                     <td>{{ product.inventory[0].product_stock.value }}</td>
                     <td>
                         <div class="options-container">

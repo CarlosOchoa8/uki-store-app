@@ -70,13 +70,17 @@ body {
     background-color: #CEC8FF;
 }
 
-.prod_img img {
-    min-width: 10px;
-    height: auto;
+.img-container {
+    text-align: center;
+    vertical-align: middle;
 }
 
-/* inventory.css */
-
+.prod_img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
 /* inventory.css */
 
 .options-container {
@@ -178,9 +182,7 @@ body {
 
 .inventory-item:hover {
     background-color: #E7F0FF;
-    /* Color de fondo al pasar el mouse */
     cursor: pointer;
-    /* Cambia el cursor a puntero */
 }
 
 .inventory-item td {
