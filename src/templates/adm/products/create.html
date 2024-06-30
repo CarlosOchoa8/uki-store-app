@@ -3,7 +3,7 @@
 {% block content %}
 <link href="{{ url_for('static', filename='css/adm_panel/products/create.css') }}" rel="stylesheet" type="text/css">
 <div id="sticky-footer" class="sticky-footer">
-    <h1>Agregar producto nuevo</h1>
+    <h1><span id="product-name-preview">Agregar producto nuevo</span></h1>
 </div>
 <div class="sub-container">
     <div class="form-container">
@@ -11,7 +11,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">Nombre del Producto</label>
-                    {{ form.name(class="form-control") }}
+                    {{ form.name(class="form-control", id="product-name-input") }}
                     {% for error in form.name.errors %}
                     <span class="error-text">{{ error }}</span>
                     {% endfor %}
@@ -123,6 +123,16 @@
                     reader.readAsDataURL(file);
                 }
             }
+        }
+    });
+
+    document.getElementById('product-name-input').addEventListener('input', function () {
+        var productNamePreview = document.getElementById('product-name-preview');
+        var productNameInput = document.getElementById('product-name-input');
+        if (productNameInput.value.trim() === "") {
+            productNamePreview.textContent = "Agregar producto nuevo";
+        } else {
+            productNamePreview.textContent = productNameInput.value;
         }
     });
 

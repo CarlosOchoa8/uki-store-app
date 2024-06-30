@@ -40,7 +40,6 @@ body {
 }
 
 .inventory-table {
-    border: 2px solid black;
     width: 80%;
     border-collapse: collapse;
 }
@@ -70,15 +69,19 @@ body {
     background-color: #CEC8FF;
 }
 
-.prod_img img {
-    min-width: 10px;
+.img-container {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.prod_img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
     height: auto;
 }
 
 /* inventory.css */
-
-/* inventory.css */
-
 .options-container {
     position: relative;
     display: inline-block;
@@ -170,6 +173,10 @@ body {
     padding: 12px;
     border: 1px solid #ccc;
     text-align: left;
+    border: none;
+    /* Elimina los bordes */
+    padding: 15px;
+    text-align: left;
 }
 
 .inventory-table th {
@@ -178,11 +185,51 @@ body {
 
 .inventory-item:hover {
     background-color: #E7F0FF;
-    /* Color de fondo al pasar el mouse */
     cursor: pointer;
-    /* Cambia el cursor a puntero */
 }
 
 .inventory-item td {
     cursor: pointer;
+}
+
+/* Estilo para los botones de paginación */
+
+
+.pagination {
+    margin-top: 20px;
+    /* Espacio entre la tabla y la paginación */
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente los elementos dentro */
+    align-items: center;
+    /* Centra verticalmente los elementos dentro */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+}
+
+.pagination-button {
+    padding: 10px 20px;
+    border: 2px solid #CEC8FF;
+    background-color: transparent;
+    color: #CEC8FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 4px;
+}
+
+.pagination-button:hover {
+    background-color: #CEC8FF;
+    color: #fff;
+}
+
+/* Añade estos estilos a tu archivo CSS */
+
+.inventory-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.inventory-table tbody tr:last-child {
+    border-bottom: none;
 }

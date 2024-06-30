@@ -40,7 +40,6 @@ body {
 }
 
 .inventory-table {
-    border: 2px solid black;
     width: 80%;
     border-collapse: collapse;
 }
@@ -174,6 +173,10 @@ body {
     padding: 12px;
     border: 1px solid #ccc;
     text-align: left;
+    border: none;
+    /* Elimina los bordes */
+    padding: 15px;
+    text-align: left;
 }
 
 .inventory-table th {
@@ -220,3 +223,56 @@ body {
     background-color: #CEC8FF;
     color: #fff;
 }
+
+/* Añade estos estilos a tu archivo CSS */
+
+.inventory-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    /* Añade una línea divisoria entre filas */
+    transition: background-color 0.3s ease;
+}
+
+.inventory-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.image-container img {
+    border-radius: 4px;
+}
+
+.options-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.options-menu a:hover {
+    background: #f9f9f9;
+}
+
+
+.options-menu.show {
+    display: block;
+}
+
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pagination-button:hover {
+    background: #0056b3;
+}
+
