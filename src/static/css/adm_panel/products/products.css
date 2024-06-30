@@ -188,3 +188,35 @@ body {
 .inventory-item td {
     cursor: pointer;
 }
+
+/* Estilo para los botones de paginación */
+
+
+.pagination {
+    margin-top: 20px;
+    /* Espacio entre la tabla y la paginación */
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente los elementos dentro */
+    align-items: center;
+    /* Centra verticalmente los elementos dentro */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+}
+
+.pagination-button {
+    padding: 10px 20px;
+    border: 2px solid #CEC8FF;
+    background-color: transparent;
+    color: #CEC8FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 4px;
+}
+
+.pagination-button:hover {
+    background-color: #CEC8FF;
+    color: #fff;
+}

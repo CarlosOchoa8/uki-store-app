@@ -40,7 +40,9 @@ def inventory():
 @panel_blueprint.route("/productos", methods=["GET", "POST"])
 def get_products():
     """Get all products."""
-    products = product_crud.get_products_data()
+    page = request.args.get("page", 1,  type=int)
+    products = product_crud.get_products_data(page=page)
+
     return render_template("adm/products/products.html", products=products)
 
 
@@ -50,7 +52,6 @@ def update_product(product_id: int):
     """Update a product."""
     product_form = ProductUpdateForm()
     product = product_crud.get(id=product_id)
-
     if request.method == "POST" and product_form.validate_on_submit():
         product_in = product_form.data
         if product_crud.get_by_name(name=product_in["name"]) or product_crud.get_by_sku(sku=product_in["sku"]):
